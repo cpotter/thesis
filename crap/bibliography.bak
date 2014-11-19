@@ -1,0 +1,20 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: Cp1252
+
+@INPROCEEDINGS{Whitted:2005:IIM:1198555.1198743,
+  author = {Whitted, Turner},
+  title = {An improved illumination model for shaded display},
+  booktitle = {ACM SIGGRAPH 2005 Courses},
+  year = {2005},
+  series = {SIGGRAPH '05},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1198743},
+  articleno = {4},
+  doi = {10.1145/1198555.1198743},
+  keywords = {computer animation, computer graphics, raster displays, shading, visible
+	surface algorithms},
+  location = {Los Angeles, California},
+  url = {http://doi.acm.org/10.1145/1198555.1198743}
+}
+

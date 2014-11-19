@@ -1,0 +1,628 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  New template code for TAMU Theses and Dissertations starting Fall 2012.
+%  For more info about this template or the
+%  TAMU LaTeX User's Group, see http://www.howdy.me/.
+%
+%  Author: Wendy Lynn Turner
+%	 Version 1.0
+%  Last updated 8/5/2012
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                           Implementation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{\uppercase {Implementation Results}}
+
+\section{Image Synthesis Program Structure and Implementation}
+
+The basis for every ray tracing program can be broken down into a simple set of processes.  First a program must be able to read and write images.  Once the ability to read and write images has been realized, the process for casting rays is demonstrated by the following pseudocode, or code outline:
+
+\begin{algorithm}[H]
+\label{alg:RayTracingPseudocode}
+\setstretch{1.0}
+ \ForEach{~$pixel$ in ~$image$}{
+    \ForEach{$object$ in $scene$}{
+        \If{$object$ intersects $ray$}{
+               $intersection$ = distance of intersection of object and ray from viewpoint\;
+            \If{$intersection$ \textgreater $previousIntersection$}{
+                $previousIntersection$ = $intersection$\;
+                }
+                }
+    }
+    \If{$intersection$ exists}{
+        \ForEach{~$Light$ in ~$scene$}{
+            determine $materialColor$ from ~$Light$\;
+        }
+        $pixel$ = $materialColor$\;
+    }
+    \Else{
+        $pixel$ = black or alpha(no color)
+    }
+}
+write image\;
+\caption{Ray Casting Pseudocode}
+\end{algorithm}
+
+Each pixel in an image will correspond to a position in 3D space, as demonstrated in the Figure \ref{fig:raytracingdiagram}, found on page \pageref{fig:raytracingdiagram}. In this Figure \ref{fig:raytracingdiagram} each box represents an image pixel.  The basics of ray casting are determined as for each pixel in the image, determine if there is an intersection with each 3D object in the scene.  The closest object's intersection point will determine the pixel's final color based off of that object's illumination algorithm and the lights in the scene.  Each ray tracer written follows the above pseudocode, but each ray tracer also adhered to specific structure and code organization.  In order to better understand the ray tracing structure, the researcher needed to establish and learn some important Computer Science terms.
+
+\section{Milestone 1: Preliminary Preparations}
+Preliminary Preparations refers to anything that needed to be accomplished before being able to start working on the ray tracing theory coding.  In this section, simple matters such as program language installation and accessibility will be discussed.  Also discussed is the majority of the ``Utilities" section of Figure \ref{fig:RayTracerClassStructure}. The foundations of a ray tracing program are built around two fundamental procedures, image writing and vector math. It can be argued that ray tracing can also be accomplished through matrix operations, but for the purposes of this thesis, vector math will be enough.  vector math is the basis for all ray tracing theory, and because of this, a class or data structure that can accomplish all aspects of vector math including addition, subtraction, dot product and cross product is crucial to accomplishing the image synthesis program.  In addition to this, in order to see the final product after all the theory has been calculated, you must be able to write an image.  Arguably the easiest image to write out is a Portable PixMap (PPM).  Other image formats include JPEG, BITMAP, and PNG.  Each of these image formats requires a more complicated compression algorithm.  Each language may also require unique addition files in order to compile or execute the final product.  Each of these languages will be assessed from the viewpoint of a student in the Visualization Department of Texas A\&M, because this is directly relevant to the researcher's experience.
+\subsection{C++}
+The C++ language, as described in Section \ref{sub:C++}, is an object-oriented language that is considered both a high and low level language because of the level of control you can have over computer functionalities.  Development and installation with C++ was accomplished via the provided computers at Texas A\&M's Department of Visualization.  When developing in a Linux/Unix environment, C++ can be executed straight from the terminal of the operating system.  This means no external IDE is needed to compile your code.  This development style was more appealing to the researcher because IDE environment's have their own learning curve to make the coding work, which would would have to be realized before learning the C++ language semantics.  However, if the Department of Visualization was not available, installation of the C++ development tools presents it's own issues.  To work on a Windows computer, you must first determine a compiler to work from, download that compiler, and then work from that specific compilers commandline.  Common practice would be to download an IDE such as Visual Studio or Eclipse.  Since computers are not typically sold with a Linux operating system on them, developing in Linux outside of an academic setting would mean to freshly install a new operating system, which is not a beginners task.  After learning how to install Linux, you must then learn the proper way to download specific compiler packages, which with the help of Google can be significantly easier than installing a compiler in Windows since it is merely a written command into the computer's terminal.  A Macintosh computer was not tested, but theoretically runs off of a Unix platform like Linux and is more commonly sold in stores, making it more accessible to students who are not computer scientists.  Starting to develop in C++ on any computer is a complicated task unless it has been provided for you, like at Texas A\&M.
+
+What makes C++ most unique from other languages explored in this thesis is the concept of a makefile, or the make command.  When forgoing the use of an IDE, in order to communicate with the compiler installed on the Unix platform, you need to create a file that will define which source code files are needed to make object files and which compilers and linkers are included in the make command.  With an IDE, if you can get the IDE to work correctly, it will automatically generate a makefile and perform the make command.  This further solidified the decision to work without a proper IDE and use a syntax highlighting text-editor, because nothing was generated automatically, only what was typed and developed by the researcher was executed.  This allowed for easier debugging of the makefile and make command rather than debugging of the IDE's internal processes.
+
+C++ also introduces another difference from other languages used in this thesis, which are optimum for processing speed, but also can be argued is just another confusing detail to learn about the language.  When creating a class in C++, it is common practice to outline the class structure in a ``header" file and then flesh out this outline in a ``.cpp" file.  This is a technique inherited from C coding, which was mostly used for older computers that could not support large quantities of memory at the same time.  However, since computers have improved, this practice now further helps to segregate the interface of a class and the implementation of the class rather than save memory space during execution time.  For this thesis, only header files were used because speed optimization was not a priority.
+
+In addition to a makefile, another obstacle introduced by C++ was the vector math library.  C++ does not have a standard vector library.  This operation needs to be hand coded in order to be available for use.  Either a developer has to implement their own vector math library, or borrow a pre-existing library.  This requires additional research or work to write the code needed.  If a developer is going to borrow code from the Internet, they need to trust that the original writer knew what they were doing.  They then need to learn how to use the classes or structures defined in this found vector class.  The vector class used for this thesis was a library circulating amongst the Texas A\&M students and was written by a former faculty member at A\&M, so the source was reputable and could be trusted to be useful and correct.
+
+The same obstacle applies to the image reading and writing functionality of an image synthesis program.  There is no standard C++ image library.  To read and write images, a developer needs again to write their own code or borrow an existing third-party library.  For this thesis, a image class was written to process .ppm images.  This is very limiting to the functionality of the final image synthesis program, because the .ppm images were always converted to .png or .jpg for web use after they were created, but for the developer .ppm was the most accessible and easiest to write, because of the format of a .ppm image.  This was determined because the thought of including a third-party library, more specifically the semantics of linking the files correctly in the coding process seemed more difficult than writing an original class.
+\subsection{Processing}
+Processing handles the preliminary preparations issues significantly different from C++.  Whereas the researcher tried to stay away from IDE's for C++, Processing itself is one giant IDE for the Java language, so that would have been impossible.
+
+Installation of the Processing language is simple.  A compressed file is downloaded from the processing.org website and once uncompressed an application file can be clicked and opened.  This will start the Processing application and development can begin.  The processing.org website provides downloads for the three major operating systems, Windows(32-bit and 64-bit), Linux(32-bit and 64-bit) and Mac OS X.  This application file does not require installation, so it can be run from anywhere on your computer.  This is convenient when installed on an external hard drive because anywhere the hard drive can be read you can develop with Processing from.  The availability of Processing is convenient for students who may not have a laptop and are switching between un-networked workstations that do not keep track of their workspaces. For other languages this would mean reinstallation of the IDE or compilers, or developing a new workflow for a new computer that you are working with (by using a different IDE or text editor).
+
+Processing has a vector math class built into it's IDE called PVector.  This library has extensive documentation on the processing.org website.  The PVector implementation is something to be discussed however.  The quirk of PVector operations can best be described with an example.  Consider the C++ equation for determining the hit point along a ray from the rays origin:
+
+\begin{equation}
+\label{eq:C++Equation}
+p_{hit} = ray.Origin + t*ray.Direction
+\end{equation}
+
+This same equation in PVector would be written:
+
+\begin{equation}
+\label{eq:PVectorEquation}
+p_{hit} = PVector.add(cast.Origin, PVector.mult(cast.Direction,t))
+\end{equation}
+
+Rather than have operator overloads for the math components of Vectors, each operation is a function.  This can either make equations very long and confusing to look at, or create many more lines of code.  Out of the two equations, since Equation \ref{eq:C++Equation} has more distinguishable characters, it will be easier to understand and therefore debug if a problem occurs than Equation \ref{eq:PVectorEquation}.
+
+Processing also has included it's own image class.  This image class is very convenient and has no quirks to be noted.  The PImage library has the ability to save any type of common image file, as long as the file type is specified within the image save command.  The same is true for the PImage open command.
+
+\subsection{Python}
+Many of the same complications that arise with C++ occur with Python as well.  Python is arguably much simpler to develop on a Linux environment because of the capability of running programs through the Unix terminal.  However, unlike C++, Python does not need a header file or to be compiled before running on a computer.  To install Python, one must go to Python.org and download the correct source.  Python has been released for all major platforms just as Processing has been.  Python is pre-installed on Unix based systems, so development can start right away with Linux or Max OS X.  For windows, a similar process for use with IDE's and random Google searches on how to set up Python for a Windows environment is necessary.
+
+Python does not have a vector class library.  The same issues that were apparent for C++ programming are also relevant for Python.  However, the researcher found it easier to find third party vector libraries written in Python, which might be as a direct result of the Python communities popularity in the past few years.  For this thesis a vector class was written based off of the C++ vector library used.  The decision to write an original Python vector class was not because a better library could not be found, but rather as an educational exercise to familiarize oneself with the Python language.
+
+The imaging library that was used for this thesis is called the Python Imaging Library(PIL).  PIL originally was a Python supported library until their most recent release.  Now PIL is a third party image library that is still in development for the latest 3.0 version of Python.  If the latest version of Python is used, the same difficulties will occur as with C++, but into 3.0 are not significant in Python to effect the ray tracing process. It is recommended to use a version of Python that supports PIL, because it is more beneficial to have the PIL capabilities rather than write a image class from scratch.
+\subsection{RenderMan\copyright}
+RenderMan\copyright \space for this thesis is an outlier.  It does not follow the same milestones as the other coding languages but there is a very important fact to point out.  RenderMan\copyright\space is a very expensive rendering engine that is not available to the ``average joe".  As of writing this thesis in 2014 a RenderMan\copyright\space Floating Institutional license sells for \$274.00.  The same goes for a Pro Server license.  A one year student subscription costs 199.95, and that does not allow students to produce anything for commercial value.  Over at least 4 years of schooling that is \$800 on top of tuition and other books expenses.  It is not in the researchers budget, nor in most students budget, to have access to RenderMan\copyright\space outside of an academic setting.  Thankfully Texas A\&M has an Institutional license for RenderMan\copyright\space that was used for this, but that meant the accessibility of using RenderMan\copyright\space outside of school hours or at anytime could be limited by school computer availability.
+
+It is worth noting that there is an open source alternative to RenderMan\copyright\space called Pixie\copyright.  This is based off of the RenderMan\copyright\space syntax, but does not have every aspect that RenderMan\copyright\space does, nor is it developed by the same people at Pixar.  However, if it is most beneficial to learn the RenderMan\copyright\space syntax and RIB/RSL file structure, Pixie\copyright\space might be a safe alternative to use from home or outside of an academic environment.
+
+\section{Milestone 2: Direct Illumination- Ray Casting}
+Majority of the planning and learning occurred on an implementation level during this milestone, because it was the first milestone to implement code.  Declaring a class for each language was a different learning process.  C++ and Processing have a similar syntax, with relatively minor changes but Python is significantly different, not only in syntax but in theory.
+A class is fundamentally a descriptor of characteristics and functions needed by a virtual ``object" in a computer program.  Class declaration and planning for each language is important because this relates back to accomplishing our ray-tracing theory, which establishes our goal to iterate over every object in a scene from each pixel in an image to determine an intersection.  Most logically, we want every object in our scene to be held in one place so that we only need to write one iteration loop.  Furthermore, since we have no knowledge of how many objects might be in a scene at one time, ideally this container should be dynamic in size.  This introduces our two main challenges for implementing Basic Ray Casting theory into computer programming, organization of classes(objects) and assembly of those classes into a dynamically sized data container (or data structure).
+\subsection{Classes}
+
+\subsection{Data Structures}
+Accomplishing the data structure task in Python is the most simple and takes no extra effort.  Simply declare an object and place it in a Python list, like so:
+\begin{lstlisting}[language=Python, caption=Python List Example, style=mystyle]
+sphere = Sphere.Sphere();
+cube = Cube.Cube();
+objects =  [];
+objects.append(sphere);
+objects.append(cube);
+\end{lstlisting}
+That code will create a sphere object, cube object, and an objects list, and then add the sphere and cube into the data structure with the lists append method.  Python lists can accept any combination of different variable types, which can be useful for a ray-tracers implementation but dangerous for software prosperity and robustness.  If we are assuming that all variables in a list have the same type and therefore the same associated functions and an object that does not fall under these assumptions gets added to the list, this will cause the program to fail.  More care needs to be taken to make sure all variables are of the correct type that are added to a list to be sure that the program will run successfully, since this is not required for the program to start running in the first place.
+
+That is the reason why it is more difficult to accomplish the data structure task in C++ and Processing(Java).  All objects must be of the same type to add them to a data structure.  Furthermore the most basic data structure, an Array, must be declared a specific size upon initialization.  The size issue can be easily circumvented however.  For each of these there is a dynamic container that will grow and shrink in size. C++ has a vector data structure and Processing has an ArrayList. To declare each is simple:
+\begin{lstlisting}[language=C++, caption=C++ Vector Example, style=mystyle]
+vector <Sphere> sphere_list;
+Sphere sphere_object = new Sphere();
+sphere_list.push_back(sphere_object);
+\end{lstlisting}
+\begin{lstlisting}[language=Java, caption=Java ArrayList Example, style=mystyle]
+ArrayList<Sphere> sphere_list = new ArrayList<Sphere>();
+Sphere sphere_object = new Sphere();
+sphere_list.add(sphere_object);
+\end{lstlisting}
+Each of these examples creates a \textit{Sphere} list, an instance of a \textit{Sphere} object, and then puts that \textit{Sphere} object into the \textit{Sphere} list.  Note that each structure \textit{must} be declared as the type of object that is being placed into it.  Since Processing and C++ are both strong-typed languages, eliminating the data type issue is not possible, but there is a solution.  Cardelli and Peter describe strong-typed, or static-typed, languages in their article entitled textit{On Understanding Types, Data Abstraction, and Polymorphism} as follows
+\begin{quote}
+Static typing allows type inconsistencies to be discovered at compile time and guarantees that executed programs are type-consistent. It facilitates early detection of type errors and allows greater execution-time efficiency. It enforces a programming discipline on the programmer that makes programs more structured and easier to read. \cite{cardelli1985understanding}
+\end{quote}
+
+Two Computer Science called Inheritance and Polymorphism will help to solve this problem.  Inheritance is the idea that a child class can inherit the properties and functions of a parent class.  Cardelli and Wegner also explain different types of polymorphism, and from their explanation the type used for this thesis is called subtyping.
+\begin{quote}
+Subtyping is an instance of \textit{inclusion polymorphism}. The idea of a type being a subtype of another type is useful not only for subranges of ordered types such as integers, but also for more complex structures
+such as a type representing Toyotas which is a subtype of a more general type such as Vehicles. Every object of a subtype can be used in a supertype context in the sense that every Toyota is a vehicle and can be
+operated on by all operations that are applicable to vehicles. \cite{cardelli1985understanding}
+\end{quote}
+Subtyping will allow us to accomplish the example that if both a sphere class and a cube class need a move function that will reposition it within the scene, a parent Shape class can be established that will provide inherited logic for each class.  If each object also needed a resize class, but the sphere needed to resize differently than all other objects, the size function can also be rewritten in the sphere class.  The type Shape can be subtyped in to Sphere and Cube to accomplish shape specific logic as needed.  This is accomplished in C++ as follows:
+
+\singlespacing
+\begin{lstlisting}[language=C++, style=mystyle]
+//shape.h file//
+class Shape
+{
+    public:
+        Shape(){};
+        float move(){
+            //calculate size for all objects
+        }
+        virtual float size(){
+            //calculate size for all objects
+        }
+}
+\end{lstlisting}
+\begin{lstlisting}[language=C++, style=mystyle]
+//sphere.h file//
+#include "shape.h"
+class Sphere: public Shape
+{
+    public:
+        Sphere(){};
+        float size(){
+            //calculate sphere size logic.
+        }
+}
+\end{lstlisting}
+\begin{lstlisting}[language=C++, caption=C++ Inheritance Example, style=mystyle]
+//cube.h file//
+#include "shape.h"
+class Cube: public Shape
+{
+    public:
+        Cube(){};
+}
+\end{lstlisting}
+\doublespacing
+In the above example, all classes will have a move function and a size function, but the size function for the Sphere class will function differently than the size function for the Shape/Cube class because it has been overwritten.  All children classes need to call their own constructors in order to be instantiated.  It is important to note that a child class must contain ``\#include `sphere.h'" or else it will not work correctly. In order to rewrite a parent function in a child class, the keyword virtual needs to be used as seen on the size function in the shape.h example.  To accomplish this same procedure in Processing, classes need to be established as follows:
+
+\singlespacing
+\begin{lstlisting}[language=Java, style=mystyle]
+//shape.pde file//
+abstract class Shape
+{
+    Shape(){};  //Constructor
+    float size(){
+        //calculate size for all object types;
+    }
+}
+\end{lstlisting}
+\begin{lstlisting}[language=Java, caption=Java Abstract Class Example, style=mystyle]
+\label{listing:Java Abstract Class Example}
+//sphere.pde file//
+class Sphere extends Shape
+{
+    Sphere(){};
+    float size(){
+        //calculate size specific for sphere
+    {
+}
+\end{lstlisting}
+\doublespacing
+The syntax for the cube.pde file is the same as the sphere.pde with the extends keyword showing that the sphere is the child of the Shape class.
+\begin{center}
+\line(1,0){100}
+\end{center}
+\subparagraph{Note:Python Classes}
+While parent classes are not important for Python list functionality because Python can be considered a dynamic type language (as opposed to the static type for C++ and Java), for organizational purposed they were used and inheritance was declared as follows (note tabs and spacing), using the same example:
+\singlespacing
+\begin{lstlisting}[language=Python, style=mystyle]
+//shape.py file//
+class Shape(object):
+    __init__(self,...):
+        //shape constructor
+    def size(self,...):
+        //size calculation for all child classes
+\end{lstlisting}
+\begin{lstlisting}[language=Python, caption=Python Class Inheritance Example, style=mystyle]
+//sphere.py file//
+import Shape
+class Sphere(Shape.Shape):
+    def __init__(self,...):
+        //sphere constructor contents
+    def size():
+        //calculate size specific for sphere
+\end{lstlisting}
+\begin{center}
+\line(1,0){100}
+\end{center}
+\doublespacing
+\paragraph{} Now that the class structure has been established for each strict-type language to promote a single object data container, which will mirror the ray tracing structure theory, establishing the data structure for each language needs to be adjusted.  To introduce how this is achieved in each language, the topic of ``pass-by-value" and ``pass-by-reference" must be discussed.  In both C++, when declaring an object, two variations can be done in relation to the memory organization within the computer.  The first, ``pass-by-value" is the most common and everytime a variable changes or moves, a \textit{copy} of the variable is made within the backend and saved in a new location.  However another schema exists, ``pass-by-reference", which rather than copies the data creates a reference or ``pointer" back to the original variable.  The ``pass-by-reference" tactic in C++ is what will allow different variable types to be saved to a common parent data structure, as follows:
+\begin{lstlisting}[language=C++, caption=C++ Vector Example, style=mystyle]
+vector <Shape*> shape_list;
+Sphere *sphere_object = new Sphere();
+sphere_list->push_back(sphere_object);
+\end{lstlisting}
+Declaring the vector with the ``*" denotes a C++ pointer, or that the variable will use the pass-by-reference schema.  Pass-by-reference and pass-by-value variables cannot be combined within a data structure.  To then call any functions within the pointer variables, you must use ``->" rather than ``.".  This allows us to save all different shape objects within the same data structure.  To accomplish this is Processing you may have noticed that in \ref{listing:Java Abstract Class Example} that the Shape class was declared as Abstract.  This keyword signifies that an object of this type may not be instantiated within a program.  This keyword demonstrates true inheritance because it acts as a placeholder for commonly used functions and variables between class types.  In Java, it will allow us to declare child classes as common types without losing each classes individual functions and variables. This is accomplished as follows:
+\begin{lstlisting}[language=Java, caption=Java ArrayList Example, style=mystyle]
+ArrayList<Shape> shape_list = new ArrayList<Shape>();
+Shape sphere_object = new Sphere();
+Shape cube_object = new Cube();
+shape_list.add(sphere_object);
+shape_list.add(cube_object);
+\end{lstlisting}
+\doublespacing
+Notice that we are declaring sphere\_object and cube\_object as a type Sphere but using the child classes individual constructors.  This will allow us to call ``shape\_list.add()" on the next two lines without throwing an error.  If the Shape class was not declared as abstract, when declaring Shape sphere\_object and calling the child constructor, and functions that are specific to the child class will be replaced with the parent classes functions.  While Java still has ``pass-by-value" and ``pass-by-reference", Processing/Java has simplified their language to effectively made all declared variables function as pointers, pointing back to the original variables declaration.
+
+\section{Milestone 2: Direct Illumination- Ray Casting}
+For this thesis, the basic ray casting milestone took the longest amount of time.  The development time for this milestone is significantly longer than other milestones because there is no code to start from.  A majority of the planning and preparation for the rest of the ray tracing process starts here.  This section will be split into four parts for each language, Basic Ray Casting, Shadow Casting, Texturing and Ray Casting Triangles.
+\subsection{Basic Ray Casting}
+\label{subsec:BasicRayCasting}
+Basic Ray Casting will discuss the basics of planning with the intricacies of language syntax to accomplish exactly what was desired in each language.  The goal of each ray tracer was to abstract the classes in the ray tracer to most literally accomplish Pseudocode \ref{alg:RayTracingPseudocode}.  The end goal was to establish one ``dynamic" data container that could hold an unlimited number of objects, shown in Figure \ref{fig:SceneStructure}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/Penguins.jpg}
+\caption{Theoretical 3D Raytracing Scene Structure}
+\label{fig:SceneStructure}
+\end{figure}
+
+Generally in computing languages it is impossible to hold more than one type of object in a data structure.  For instance, if a 3D scene held spheres and rectangles, one data structure would have to be called to hold all the spheres and one data structure would be called to hold all the rectangles.  You cannot have a Spheres and Rectangles combined data structure.  For the ray tracing process the ray tracer would have to iterate over one array and then iterate again over another.  This can result in more lines of code that necessary and something that may look different from the original pseudocode.  For this reason it is beneficial to abstract all sphere and rectangle objects under a common super class called Shapes.  A shape class is considered a parent class that will allow Spheres and Rectangles to share common properties that might be useful for both classes.  With a super class established called Shapes, both Sphere and Rectangle classes could theoretically be sorted together in one data structure.  Figure \ref{fig:ShapeStructure} shows the needed properties and functions for all shape objects to accomplish Ray Casting.
+
+
+\begin{table}[h]
+\centering
+\caption{Abstract Structure of Shape Class for Basic Ray Casting}
+\begin{tabular}{|l|c|}
+\hline
+Shape&\\
+\hline
+Variables & Position\\
+& Hit Point \\
+& Material \\
+& Distance \\
+\hline
+Functions & Intersect\\
+& rtnColor \\
+& calcNormal \\
+\hline
+\end{tabular}
+\label{fig:ShapeStructure}
+\end{table}
+
+As we can see, every shape in a 3D scene must have a position in 3D space, a hit point in 3D space that is determined through the Intersect function, a Material to return the color properties associated with the shape, and a distance from the eye point that is also determined with the hit point.  Each Shape object must also be able to return color information associated with the Material and also return surface normal information, which contributes to the surface shading as well.  This leads to the next abstract problem, that each Shape must include a space for a Material.
+As shown in Section \ref{sec:RayCasting} there are a variety of ways to calculate shading information, including Lambert, Phong, and Gooch \& Gooch.  Since there are so many varieties of Shading Materials, it was determined that there should be a Material parent class that would encompass common properties and functions needed for every Material in the ray tracing system.  It was determined the abstract Material class should look like the following:
+
+
+\begin{table}[h]
+\centering
+\caption{Abstract Structure of Material Class for Basic Ray Casting}
+\begin{tabular}{|l|c|}
+\hline
+Material&\\
+\hline
+Variables & Color\\
+\hline
+Functions & returnColor \\
+\hline
+\end{tabular}
+\label{fig:MaterialStructure}
+\end{table}
+
+The base Material class needed to include at least one color and have a way to calculate the strength of that color based on specific ratios provided by the Shapes rtnColor function.  As part of the Shape and Material classes returnColor function it was necessary to start planning how to represent an abstract Light class, since important ratios and coloring information is also generated from the position of a light in 3D space.  This can be seen in Figure \ref{fig:LightStructure}
+
+\begin{table}[h]
+\centering
+\caption{Abstract Structure of Light Class for Basic Ray Casting}
+\begin{tabular}{|l|c|}
+\hline
+Material&\\
+\hline
+Variables & Color\\
+& Position\\
+\hline
+\end{tabular}
+\label{fig:LightStructure}
+\end{table}
+
+For Basic Ray casting the biggest challenge was to implement these three abstract classes and get them to seamlessly work together in the ray tracing program.  We will refer to the Shape super class in each of the following subsections but this process was established for each needed super class.
+\subsubsection{C++}
+To define a class in C++ a few things need to be established.  Please refer to the Appendix for an example of Shape.h and Sphere.h created in C++, which will be used as an example.  The first thing to be established being something called include guards.  In the case of Shape.h, the include guards would look something like the following:
+\begin{verbatim}
+#ifndef SHAPE_H
+#define SHAPE_H
+/*Shape.h content here */
+#endif
+\end{verbatim}
+An include guard prevents Shape.h to be defined multiple times, which can happen if Shape.h is included into multiple other classes within the ray tracing program that inherit from each other.  If these are not included this can potentially cause an error and inhibit the program from running.  It can be argued that you can include every class needed in the same document and remove the need for include guards and include calls, but then your document will get extremely long and difficult to peruse and debug.  The next step when defining a class is to include other classes that might be important, which in the case of Shape.h is the vector class, the Material class, a Light class and a Ray class.  Determining these classes and how to locate them within the operating systems filing system can be a challenge.  After determining the includes, to then declare the class is simple.
+
+\begin{verbatim}
+class Shape {
+    /* Class variables and functions go here*/
+}
+\end{verbatim}
+
+Within the brackets you can begin to declare variables and functions necessary to the Shape class.  Variables are defined in three categories, which define the scope or availability of each outside of the class file: public, protected, or private.  Public means that any other C++ files that include ``Shape.h" can access and alter any public variable within an instance of that class file.  Protected variables mean only children of the class can access and alter the variable.  So in the case of Shape.h, if Sphere.h were to be considered a child class of Shape.h, it can access and alter the protected variables.  Private means that no outside file can access the variable.  Only Shape.h can change and alter the variable directly.  For this thesis, most variables were considered private or protected, but there is no issue with leaving all variables public.  However, this is another thing that needs to be considered when trying to create and object-oriented ray tracer.
+
+Next would be to define a constructor, or a function that is designed to instantiate a Shape object in another program.  For C++ this is accomplished as following:
+
+\begin{verbatim}
+Shape(Vector3d pos){}
+\end{verbatim}
+
+A constructor is defined just like other functions, but with a name that matches the class name.  To define functions in this parent class we need to consider the following: which functions will the child classes \textit{use}, and which functions will the child classes \textit{overwrite}?  Any function that is not declared as private may be used by child functions, but not all functions can be overwritten.  You can try to overwrite them but unless they are declared correctly the child functions will never be used.  In order to declare a function as over-writable in C++, it needs to be declared as virtual.  In addition to the virtual keyword, a return type needs to be specified.  So the intersect function of Shape.h needs to be declared as:
+
+\begin{verbatim}
+virtual bool intersect(Ray cast){
+    /* calculate intersection here */
+}
+\end{verbatim}
+To declare a child class Sphere.h of Shape.h on must do the following:
+
+\begin{verbatim}
+#ifndef SPHERE_H
+#define SPHERE_H
+#include "Shape.h"
+class Sphere: public Shape{
+    Sphere(){} //Sphere Constructor
+    private float radius; \\Sphere specific class variables
+    bool intersect(Ray cast){
+       /* calculate intersection here */
+    }
+}
+#endif
+\end{verbatim}
+With the statement \textbf{class Sphere: public Shape} signifies that Sphere has the same variables that are associated with the Shape class.  To declare variables specific to a Sphere one just defines variables within this class file.  To then overwrite the virtual Shape.h intersect function means to declare an intersect function within Sphere.h.
+
+The next challenge is to save all child instances of Shape.h within a Shape.h data structure.  To be able to accomplish this is C++, the concept of pointers is introduced.  A pointer, in C++, is a relatively low functionality utility of the C++ language.  A pointer in C++ is a utility that describes exactly where in a computers memory to access stored data.  For instance, if we wanted to save a Sphere object as a Shape in our program and we called:
+
+\begin{verbatim}
+Shape sphereShape = new Sphere();
+\end{verbatim}
+
+this would call the constructor for a sphere, but after saving that sphere to memory, it would be concatenated and remember by the computer as a Shape object, \textit{not} a sphere object.  So this means if we were to call
+\begin{verbatim}
+sphereShape.intersect();
+\end{verbatim}
+
+we would be calculating the Shape.h's intersection rather than the Sphere's intersection code like we want. To fix this, we use pointers as follows:
+
+\begin{verbatim}
+Shape *sphereShape = new Sphere();
+\end{verbatim}
+
+This will tell the computer to save and remember that sphereShape is exactly that type and location in memory that was originally created for a sphere object. However, to access a pointer's functions and variables the following must be done:
+
+\begin{verbatim}
+sphereShape->intersect();
+\end{verbatim}
+
+The arrow after the variable name declares that this is a pointer object that has a function called intersect.  A pointer was used in C++ for all super class object instances to abstractly save all types of child objects within them.  For all Shape objects, a pointer to a Material object was created so that any child Material could be assigned to any Shape material.
+
+To solve the final dynamic data structure problem, a C++ vector was used rather than an array.  To declare an array it is common practice to know the exact number of items going into the array.  However, the process of ray casting can have any number of items that is not previously declared.  A vector on the other hand, can add and subtract items to it's total without needing a final number.  A vector can be indexed the same as an array, but in the end takes up more memory space than an array.  A vector was decidedly used because of it's flexibility and it's similarities to arrays.  Memory consumption was not considered when creating these ray tracers.
+
+A Basic Ray Casting image for C++ can be seen in Figure \ref{fig:C++BasicRayCasting}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/BasicRayCastingC++.jpeg}
+\caption{Basic Ray Casting Accomplished in C++.  A Lambert, Cartoon Shader are Shown}
+\label{fig:C++BasicRayCasting}
+\end{figure}
+
+\subsubsection{Processing}
+To define a class in Processing, after opening the application, make a new tab.  This will represent a new file in your operating system.  Refer to the Appendix for Shape.pde and Sphere.pde.  The syntax for Processing is similar Java, so to create a class, the syntax is:
+
+\begin{verbatim}
+class Shape{}
+\end{verbatim}
+
+Unlike C++ Processing does not require any include guards or include statements.  Including is all done within the Processing application. All tabs that are open within the Processing ``sketch" are included and used through other open tabs.  Creating a constructor follows the same rules as a C++ constructor, along with creating functions and variables.  To declare a child class however is different
+
+\begin{verbatim}
+class Sphere extends Shape{}
+\end{verbatim}
+
+Java introduces an extends keyword which intuitively suggests that Sphere is an extension and subclass of Shape.  Java also processes the equivalent of C++'s virtual functions differently as well.  In Java, \textit{all} functions are basically virtual functions, so the virtual keyword is not necessary.  If a function that is declared in a parent class is redeclared with a new set of instructions in a child class, the function is considered overwritten when calling that function in a child class object.
+
+To mimic C++'s use of pointers within Java introduces yet another keyword, and fundamental of the Java language.  In Java, all variables are considered references and basically act the same as C++ pointers.  To accomplish the task of saving all child instances into a data structure with the parent class, Java introduces the abstract keyword.  Abstract classes are also available in C++, but where deemed unnecessary.  To create an abstract class prepends the abstract keyword before the class declaration.
+
+\begin{verbatim}
+abstract class Shape{}
+\end{verbatim}
+
+An abstract class may not be instantiated.  This means it is strictly used as a base class that other classes will be declared under.  For instance
+
+\begin{verbatim}
+Shape shapeObject = new Shape(); \\illegal
+Shape sphereObject = new Sphere(); \\legal
+\end{verbatim}
+
+For this thesis, all super classes that need to define and hold multiple objects are abstract classes.  This includes Material and Light classes.  To call a function from a Java object is the same as if calling a function or variable from a non-pointer variable in C++:
+
+\begin{verbatim}
+Shape sphereShape = new Sphere()
+sphereShape.intersect();
+\end{verbatim}
+
+Unlike C++ where a -$>$\space is needed, Java does not need these characters.
+
+To solve the issue with dynamic data structures, Processing/Java has a data structure called an ArrayList, which works the same as a vector data structure in C++.
+
+It is important to note however, that Processing has a logistical issue when compared with the other programming languages explored in this thesis.  Since the PVector library was provided for by the Processing application, adhering to the applications 3D structures was necessary, and partially confusing when getting started.  The other ray tracers were written in a coordinate system that is considered right handed, which means the positive x-axis moves to the right of a computer screen, the positive y-axis moves towards the top of the screen and the positive z-axis moves into the screen.  However, the way that the processing Environment is established, starting at the upper-left pixel of a computer screen, the positive x-axis moves to the right, the positive y moves down the side and the positive z-axis move out of the screen, effectively making it opposite of the other ray tracers, or right handed.  This format is reminiscent of older computer systems that would draw from the upper left hand pixel of a computer screen, but can cause confusion when applying a positive y vector position to a 3D object causing it to move down the screen when the opposite might be expected.
+
+A Basic Ray Casting image for Processing can be seen in Figure \ref{fig:ProcessingBasicRayCasting}.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.3]{figures/BasicRayCastingProcessing.png}
+\caption{Basic Ray Casting Accomplished in Processing.  A Lambert, Phong and Gooch Shader is Shown}
+\label{fig:ProcessingBasicRayCasting}
+\end{figure}
+
+\subsubsection{Python}
+Python syntax is significantly different from both C++ and Java.  Please refer to Appendix which include Shape.py and Sphere.py.  Python is based off of whitespace, so function and variable scope is determined from the tab depth.  This was a big hindrance in development of code, because the scope of each for loop or function needed to be just perfect, and if a text editor does not highlight code blocks for you, the Python indention can get muddy and confusing and usually leads to code working improperly.  To create a class file in Python, the same include statements must be used like in C++.  However, include guarding is not necessary.  Rather than using the keyword include, you must use the keyword import.  However, utilizing the imported classes is different than in C++ or in Java.  For example:
+
+\begin{verbatim}
+import Vector
+vector = Vector.Vector3d()
+\end{verbatim}
+
+In order to call a function within the imported Vector class, the Vector namespace must be clarified, so that the compiler knows which files to find the following functions in.
+
+Another quirk of Python apart from it's tabular structure is the absence of curly brackets.  So to declare a class one simple writes:
+
+\begin{verbatim}
+class Shape(object):
+    #class functions and variables go here
+\end{verbatim}
+
+Inside of the parenthesis represents the parent class for the specified class.  The class object is a general class that every default class inherits from in Python.  To declare the Sphere class in a separate file would mean the following:
+
+\begin{verbatim}
+import Shape
+class Sphere(Shape.Shape):
+    #class functions and variables go here
+\end{verbatim}
+
+One way to declare class variables within a Python class would be to use the ``\_\_slots\_\_" function built in with every Python class.  However this is not necessary.  To establish a variable in a Python class one can simple create it outside of the class.  Consider if the Shape object where already created:
+
+\begin{verbatim}
+import Shape
+shapeVar = new Shape.Shape()
+shapeVar.position = 15
+\end{verbatim}
+
+If there is no pre-defined ``position" variable within the Python class Shape, it will just add it into the classes description dynamically.  For the sake of this thesis and for some sanity between coding languages, it was decided to use the ``\_\_slots\_\_" protocol within a Python class.  Slots limits the number of available variables to specific variable names, which in the end save memory but also prevents extra or unwanted variable declarations within instantiated objects.  Slots is implemented as such:
+
+\begin{verbatim}
+class Shape(object):
+    __slots__ = ('position', 'hitPoint',"Distance", "Material")
+\end{verbatim}
+
+The concept of variable scope in Python is foreign.  To accomplish protected or private variables in classes follows a convention that is called ``Name Mangling" which simply adds at least one underscore before a variable name.  This however does not cause the variable name to act protected or private, just makes it harder to guess when trying to access it from outside the Classes structures source code.  For this thesis, the Python ray caster used only public variables.
+
+To declare a constructor in Python is also different.  What is different from other languages as well is the concept of multiple constructors.  Python easily allows you to create one constructor as follows:
+
+\begin{verbatim}
+class Shape(object):
+    def __init__(self, position = Vector.Vector3d(0.0,0.0,0.0)):
+        self.position = position
+\end{verbatim}
+
+The distributed keyword \_\_init\_\_ function is the Constructor argument for the Python class Shape.py.  The statement position=Vector.Vector3d(0.0,0.0,0.0) is a tool harnessed by Python to eliminate the need for multiple constructors.  In other languages, it is deemed necessary to have a Shape() constructor, and then a Shape(Vector position) constructor, which would catch instances where a user forgot in include a position Vector when instancing a shape.  The Python statement simple says, check to see if a position variable was given in the instance, if not position is equal to this default vector.
+
+Another quirk of Python is it's dynamic structure, which will solve both challenges associated with Basic Ray tracing.  Python scripting does not require a developer to specify variable type when declaring a variable.  Therefore the declare a Shape object would mean:
+
+\begin{verbatim}
+shapeVar = new Shape.Shape()
+\end{verbatim}
+
+In Processing or C++ shapeVar needed to be declared as ``Shape shapeVar = " but Python can automatically determine it's type as it's executing the script.  This means any variable can be any value.  This can be dangerous to keep track of and debug, but it is convenient when you need to establish a data structure that can hold a variety of types of objects.  No extra effort is needed with pointers or abstract classes or anything to be able to house spheres with rectangles or anything else.  The Shape super class in Python was to better organize the code and distribute shared functions between classes, but was not needed outside of that organizational reason.
+
+The dynamic nature of Python also allows all variables to be housed within a Python data structure called a list.  Any object can be added to a Python list and no size declaration is needed.  This works the same as a C++ vector or a Processing ArrayList.  However, since it is dynamic, an error can occur which is hard to debug if objects with the incorrect type are mistakenly saved into a list designated for types with different function names.
+
+A Basic Ray Casting image for Python can be seen in Figure \ref{fig:PythonBasicRayCasting}.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.3]{figures/BasicRayCastingPython.png}
+\caption{Basic Ray Casting Accomplished in Python.  A Lambert, Phong and Gooch Shader is Shown}
+\label{fig:PythonBasicRayCasting}
+\end{figure}
+
+\subsubsection{RenderMan\copyright}
+Accomplishing Basic Ray Casting in Renderman\copyright\space is a different task than in the previous languages.  No classes or dynamic data structures are needed, but a different set of instructions need to be learned.  A RIB file needs to be generated.  This is a set of instructions for the Renderman\copyright\space engine needs to know what to generate in an image. The rib file includes a list of transforms that represent shapes in a 3d scene, and the scene and camera specifics.  To save the image and display the image the following command is needed:
+
+\begin{verbatim}
+Display "<filename>" "it" "rgb"
+\end{verbatim}
+
+This tells Renderman\copyright\space to display the image \space $<$filename$>$\space with the IT Renderman\copyright\space display device with an RGB colorspace.  Then we must define the camera:
+
+\begin{verbatim}
+Projection "perspective" "fov" 45
+Format 1280 720 1
+\end{verbatim}
+
+This then tells the renderer to create a camera with a the name perspective with a field of view of 45 degrees.  It then sets the camera/image dimensions to 1280 by 720. Finally we must declare the objects in the scene.  To declare a light and sphere within the render ``world" we use the commands:
+
+\begin{verbatim}
+WorldBegin
+    LightSource "distantlight" 2 "intensity" 1.5 "from" [0 10 0] "to" [0 0 0]
+    TransformBegin
+        Surface "lambert"
+        Sphere 1 -1 1 360
+    TransformEnd
+WorldEnd
+\end{verbatim}
+
+Renderman\copyright\space uses a method of scene description called pop and pull matrixing which can been seen with the TransformBegin and TransformEnd.  This allows segregated object creation and manipulation, and tells the renderer how to create matrices to be applied to each objects position.  The next thing needed for Renderman\copyright\space is where to find ``Surface ``lambert" " as designated before the Sphere command.  This is created within a RSL file by the developer.  The RSL file looks as follows:
+
+\begin{verbatim}
+surface lambert(){
+  vector n = normalize(N);
+  Oi = Os;
+  Ci = Cs * diffuse(n);
+}
+\end{verbatim}
+
+It is important to note that even through extensive research, it is still unclear what a majority of these variables are.  There is limited documentation for the Renderman\copyright\space coding language, and much of this code is generated from online forums or previous examples given from professors in outdated versions of Renderman\copyright\space.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.30]{figures/RenderManRayCasting.png}
+\caption{Basic Ray Casting Accomplished in Renderman\copyright.  A Lambert, Phong and Cartoon Shader is Shown}
+\label{fig:Renderman BasicRayCasting}
+\end{figure}
+
+\subsection{Shadow Casting}
+Shadow Casting introduces another aspect of ray casting.  After a hit point is achieved within a scene, to determine if the hit point is in shadow, or blocked from a light, the other objects in the scene must be surveyed again to see if they are intersecting with the hit point and each light in the scene.   Development for the lighting challenges incorporated a lot of the same issues that arose for creating Shapes and Materials in Section \ref{subsec:BasicRayCasting}.  The main issue introduced to all three languages was a new intersection function for the Shapes class that was specific to lights called intersectLight().  Some lights , such as a spotlight, have a cone of area that is included within the ``lit" portion of the lights area of influence.  More artistically, the area of influence for any light can be mathmatically represented by any function.  For a spotlight it is just a circular light shape.  With the addition of the Spotlight, another variable was added to each Material class called ``shading" which was updated by the raytracing program depending if it passed the intersectLight() function test.  The spotlight also incorporated an objects axis', which was not necessary for the previous challenges.  To determine if an object intersecting the spotlights area of influence, the direction that the spotlight was pointing needed to be established.  Technically for a spotlight only one axis was needed, but for another light, the Area Light all 3 axis were needed.  To determine the shading for the area light, sections of a virtual plane needed to be sampled in order to vary the position of a light, offering a softer shadowed result.  This meant that incorporation of an X,Y and Z axis needed to be introduced to the Light class.  The new Shape class and Light super classes look as follows:
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/Penguins.jpg}
+\caption{Demonstrates the new Shape and Light Class developed for Shadow Casting}
+\label{fig:ShapeandLightAbstractClassesforShadowCasting}
+\end{figure}
+
+Since there was little development issue with incorporating Shadow casting into the ray caster besides changing some logic within the ray tracer and writing the new Light subclasses, the next sections will just show the finished product for each language, with the exception of RenderMan\copyright.
+
+\subsubsection{C++}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/ShadowCastingC++.jpeg}
+\caption{Example of an Area Light Shadow written in C++}
+\label{fig:ShadowCastingC++}
+\end{figure}
+\subsubsection{Processing}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/ShadowCastingProcessing.png}
+\caption{Example of a Spot Light Shadow written in Processing}
+\label{fig:ShadowCastingProcessing}
+\end{figure}
+\subsubsection{Python}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/ShadowCastingPython.png}
+\caption{Example of a Point Light Shadow written in Python}
+\label{fig:ShadowCastingPython}
+\end{figure}
+\subsubsection{RenderMan\copyright}
+\subsection{Texturing}
+Texturing will refer to image mapping onto the surface of a 3D object.
+\subsubsection{C++}
+\subsubsection{Processing}
+\subsubsection{Python}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.25]{figures/TexturingPython.png}
+\caption{Example of Sphere Texturing written in Python}
+\label{fig:TexturingPython}
+\end{figure}
+\subsubsection{RenderMan\copyright}
+\subsection{Ray Casting Triangles}
+Ray casting Triangles will discuss determining intersections with Wavefront\copyright\space OBJ files.
+\subsubsection{C++}
+\subsubsection{Processing}
+\subsubsection{Python}
+\subsubsection{RenderMan\copyright}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Milestone 3: Ray Tracing and Distributed Ray Tracing}
+\subsection{C++}
+\subsection{Processing}
+\subsection{Python}
+\subsection{RenderMan\copyright}
+
+\section{Milestone 4: Indirect Illumination}
+\subsection{C++}
+\subsection{Processing}
+\subsection{Python}
+\subsection{RenderMan\copyright}

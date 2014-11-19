@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{amsfonts,graphicx}
+
+\setlength{\textwidth}{17cm} \setlength{\textheight}{9in}
+\oddsidemargin=-0.2cm \topmargin=-1.3cm
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thepage}{\thesection-\arabic{page}}
+
+\title{Qualitative Comparison of Scripting Languages used for Image Synthesis}
+
+\author{Christopher Potter}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+For this thesis, three different ray tracers will be written in the computer languages C++, Python, and Processing.  Development of each ray tracer will be challenging in it's own way because of the differences in language choices.  The goal is to analyze these challenges and qualitatively present each implementation.  A set of "ray tracing milestones" will be set up so that each language can address a uniform set of challenges within the writing process.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation and Introduction}
+Rendering is one of the fundamental building blocks for 3-d graphics image production.  When rendering images for photorealism, understanding how different effects are mathematically represented by the computer will give you an informed freedom to play with the given render controls to produce a desired result faster.  Lighting artists are encouraged to experiment with ray tracing and to have written a rendering program.  
+The process of generating a rendering program is very intimidating for an artist, however.  Besides the complex vector/matrix math needed to compute intersections within the 3d scene, getting the process to work on a computer is another challenge in itself.  In addition to remembering the linear algebra, artists need to worry about code syntax and segmentation faults, which can be demoralizing to even the most experienced computer scientist.  Rather than gaining experience/experimentation in the mathematics of ray tracing, artists are stuck focusing on the logistics of implementing unnecessary code.  This thesis will attempt to help introduce programming languages and techniques to artists so they can spend less time on the scripting aspects of the process and more on the mathematical experience of ray tracing.
+
+\begin{figure}[htbp]
+\begin{tabular}{cccccc}
+\includegraphics[height=2.00in]{images/turner}&
+\includegraphics[height=2.00in]{images/Ray_trace_diagram}\\
+(a) Turner, 1980 & (b) Ray Tracing Diagram \\
+\end{tabular}
+\caption{Examples of early ray tracing: (a) Image from first ray tracing paper by Turner Whitted. (b) and a simple breakdown of the ray tracing process.}
+\label{fig:regions}
+\end{figure}
+
+\section{Background/Literature Review}
+There are a variety of approached to producing a render program.  The fundamentals of most rendering programs lie in ray casting and ray tracing.
+For this thesis ray tracing and ray casting will both be described as the process of generating an image by tracing the path of virtual light through pixels in an image plane and simulating the effects of its encounters with virtual objects. Each will be differentiated further by their illumination models however.
+
+Ray casting, a term first introduced by Scott Roth in 1982, is the process of casting rays into a 3-d scene, finding the closest intersection through boolean operations and returning the color value of that object.\cite{Roth1982} By emulating different properties of light based off of the cosine of the normal vector and the normalized vector from the hit point of the object to a light, semi-realistic results were produced.\cite{Phong1975}\cite{gouraud1971}\cite{Blinn:1977}\cite{Cook:1987}  Other more cartoon-ish effects were produced using similar methods as well, most notably Gooch and Gooch shading.\cite{Gooch1998} For this thesis, ray casting will be categorized under direct illumination, and term meaning only illumination from a light in the 3-d environment will be calculated on the objects final color and shading.
+
+To make more realistic reflections and refractions in rendered images, a recursive process needed to be implemented.\cite{Whitted1980}  This process, which we will refer to as ray tracing, allowed surfaces to recursively call shading algorithms from objects virtually to infinity, producing hyper realistic interactions of light off of objects.  This category can be categorized under indirect illumination, or the shading model will be defined not only by the lights in the scene from direct illumination but also from other objects in the scenes.  Reflection gains it's color from objects that can be taken from other diffuse objects in the scene.  At the point of intersection with an object, another ray is calculated and the ray-intersection process starts over again, until a color is returned for the surface.  Refraction is the same, except the ray is transmitted through the object.
+These are all considered specular reflections.  Indirect illumination can also include diffuse reflections.  This includes all radiosity effects as well.  Every material in nature, even diffuse objects, have some sort of reflection or influence from other objects in its environment.  Cindy M. Goral from Cornell University identified a way to model the indirect lighting effects from color bleeding or environmental illumination of neighboring objects, which emulates this diffuse reflection. \cite{Goral:1984}  Using Goral's algorithm can give us a variety of indirect illumination effects.
+
+Ambient occlusion, an approximation of the way light radiates in real life, especially from non-reflective surfaces, can be accomplished by transmitting a set number of "diffuse rays" from each hit point and determining a ratio of intersected rays to total rays cast off the surface.  This will create a black and white image darkest at the parts of the image where objects are closest together.  Color bleeding or global illumination accomplishes this same task, but rather than summing the total ray cast, it averages the diffuse shading information for each ray cast from the hit point.  This creates a bleeding effect shown below.  Averaging the specular shading information from each sample cast from the hit point gives us either a reflective or refractive caustic.  
+\begin{figure}[htbp]
+\begin{center}
+\begin{tabular}{cccccc}
+\includegraphics[height=2.00in]{images/aOcclusion}&
+\includegraphics[height=2.00in]{images/globalIll}\\
+(a) Ambient Occlusion & (b) Global Illumination(Color Bleeding)  \\
+\end{tabular}
+\caption{Indirect Illumination Examples: (a) Ambient Occlusion. (b) Color Bleeding(Global Illumination).}
+\label{fig:regions}
+\end{center}
+
+\end{figure}
+\section{Problem}
+There are many different computer languages to choose from.  One of the most popular among computer scientists is C++ it is a compiled language that can make fast, efficient programs.  Ray tracing can be very computationally heavy but produces an image with a high degree of realism.  For this reason ray tracing practices are only used in places where real-time graphics production is unnecessary, such as animation and effects studios.  While speed is important in the animation industry, in regards to the process of learning for an artist, C++ may be too complex for non-computer scientists interested in learning the ray tracing process.
+\section{Method}
+The process of ray tracing can be broken up into distinct sections: preliminary preparations, ray casting, ray tracing, and advanced ray tracing.  Preliminary preparations refers to necessary classes or data structures needed to perform basic math operations or image reading/writing functions crucial to creating/saving your ray traced images.  This can also refer to any outside knowledge of a language needed, for instance makefiles and compilers needed to run C++ code.  Ray casting is the simplified form of ray tracing that accounts for light intersections but does not include reflections or refractions.  Ray tracing can be described as including the reflection and refraction capabilities of material properties.  Advanced ray tracing is anything beyond the ray tracing point.  These can include depth of field in a camera, glossy reflections, translucency, even go on to more advanced topics like subsurface scattering or volumetric rendering.
+
+Python and Processing are two modern programming languages that were built to be more intuitive to use.  Python developers boast of its clear, readable syntax, intuitive object orientation and high level dynamic data types. The Rochester Institute of Technology, a school with a popular undergraduate computer science major, has started teaching Python rather than Java to introductory students interested in computer science.  This suggests that because of the shallow learning curve to the syntax and the ability for high level concepts to be introduced earlier because of built in modules, Python is easier to grasp and quicker to start developing content within.
+
+Processing, based off of Java, tries to bridge the gap between scripting and artistic creation by wrapping a lot of functionality in a GUI and an extensive functionality library.  Initially Processing was developed as a software sketchbook and to teach fundamentals of computer programming within a visual context.  This language is specifically taught to students-artists at a number of universities, which suggests it is intuitive to use and quick to produce results.  Many projects accomplish with Processing are mathematically based, so bridging the gap into ray tracing should not be very difficult.
+
+C++ is one of the most popular computer languages to write a ray tracer in, and because of this, I will be comparing the writing process in Python and Processing to it.  Each ray tracer will accomplish the milestones listed above.  The code examples will be discussed to simplify the process of describing each milestone and to demonstrate the ease of use for each language.  Each program will use the same hierarchy to approach the ray tracer in a uniform way.
+
+\section{Conclusion}	
+Three ray tracers will be written in C++, Python and Processing.  Along with nicely rendered images from each of the different languages, a qualitative analysis of each language and the effort made to accomplish each milestone will be recorded as completely as possible.  In the end the goal is to have accomplished the building blocks for further expansion into teachable resources for students to reference and overcome the hardship of coding a working ray tracer.
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}
+
+

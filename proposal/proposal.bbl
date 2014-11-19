@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{Gal2007}
+R.~Gal, O.~Sorkine, T.~Popa, A.~Sheffer, and D.~Cohen-Or.
+\newblock 3d collage: Expressive non-realistic modeling.
+\newblock In {\em In Proceedings of NPAR'2007}, pages 7--14, 2007.
+
+\bibitem{Hales1992}
+Thomas~C. Hales.
+\newblock The sphere packing problem.
+\newblock {\em Journal of Computational and Applied Mathematics}, 1992.
+
+\bibitem{Hsu2010}
+Shu-Wei Hsu and John Keyser.
+\newblock Piles of objects.
+\newblock {\em ACM Trans. Graph.}, 29:155:1--155:6, December 2010.
+
+\bibitem{Kim2002}
+Junhwan Kim and Fabio Pellacini.
+\newblock Jigsaw image mosaics.
+\newblock {\em ACM Trans. Graph.}, 21:657--664, July 2002.
+
+\bibitem{Sloane1984}
+N.J.A. Sloane.
+\newblock The packing of spheres.
+\newblock {\em Scientific American}, 250:116--125, January 1984.
+
+\end{thebibliography}

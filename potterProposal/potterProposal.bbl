@@ -1,0 +1,65 @@
+\begin{thebibliography}{10}
+
+\bibitem{Blinn:1977}
+James~F. Blinn.
+\newblock Models of light reflection for computer synthesized pictures.
+\newblock {\em SIGGRAPH Comput. Graph.}, 11(2):192--198, July 1977.
+
+\bibitem{cook1984shade}
+Robert~L Cook.
+\newblock Shade trees.
+\newblock In {\em ACM Siggraph Computer Graphics}, volume~18, pages 223--231.
+  ACM, 1984.
+
+\bibitem{cook1984}
+Robert~L Cook, Thomas Porter, and Loren Carpenter.
+\newblock Distributed ray tracing.
+\newblock In {\em ACM SIGGRAPH Computer Graphics}, volume~18, pages 137--145.
+  ACM, 1984.
+
+\bibitem{Cook:1987}
+Robert~L. Cook and Kenneth~E. Torrance.
+\newblock Image understanding 1985-86.
+\newblock chapter A reflectance model for computer graphics, pages 1--19. Ablex
+  Publishing Corp., Norwood, NJ, USA, 1987.
+
+\bibitem{glassner2010processing}
+Andrew Glassner.
+\newblock {\em Processing for Visual Artists: How to Create Expressive Images
+  and Interactive Art}.
+\newblock AK Peters, Ltd., 2010.
+
+\bibitem{Gooch1998}
+Amy Gooch, Bruce Gooch, Peter Shirley, and Elaine Cohen.
+\newblock A non-photorealistic lighting model for automatic technical
+  illustration.
+\newblock In {\em Proceedings of the 25th annual conference on Computer
+  graphics and interactive techniques}, SIGGRAPH '98, pages 447--452, New York,
+  NY, USA, 1998. ACM.
+
+\bibitem{Goral:1984}
+Cindy~M. Goral, Kenneth~E. Torrance, Donald~P. Greenberg, and Bennett Battaile.
+\newblock Modeling the interaction of light between diffuse surfaces.
+\newblock {\em SIGGRAPH Comput. Graph.}, 18(3):213--222, January 1984.
+
+\bibitem{gouraud1971}
+Henri Gouraud.
+\newblock Continuous shading of curved surfaces.
+\newblock {\em Computers, IEEE Transactions on}, 100(6):623--629, 1971.
+
+\bibitem{Phong1975}
+Bui~Tuong Phong.
+\newblock Illumination for computer generated pictures.
+\newblock {\em Commun. ACM}, 18(6):311--317, June 1975.
+
+\bibitem{Roth1982}
+Scott~D Roth.
+\newblock Ray casting for modeling solids.
+\newblock {\em Computer graphics and image processing}, 18(2):109--144, 1982.
+
+\bibitem{Whitted1980}
+Turner Whitted.
+\newblock An improved illumination model for shaded display.
+\newblock {\em Commun. ACM}, 23(6):343--349, June 1980.
+
+\end{thebibliography}

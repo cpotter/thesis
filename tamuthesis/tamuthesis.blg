@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: tamuthesis.aux
+A level-1 auxiliary file: titlepage.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: dedication.aux
+A level-1 auxiliary file: acknowledgements.aux
+A level-1 auxiliary file: nomenclature.aux
+A level-1 auxiliary file: lists.aux
+A level-1 auxiliary file: introduction.aux
+A level-1 auxiliary file: background.aux
+A level-1 auxiliary file: Methodology.aux
+A level-1 auxiliary file: Implementation.aux
+A level-1 auxiliary file: results.aux
+A level-1 auxiliary file: bibliography.aux
+The style file: plain.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 182 of file references.bib
+ :   
+ :   date = {4/12/2008}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Agrawal1986"
+Warning--can't use both volume and number fields in blinn1978simulation
+(There was 1 error message)

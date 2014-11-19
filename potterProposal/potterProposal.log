@@ -1,0 +1,237 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.23)  11 JAN 2014 09:37
+entering extended mode
+**C:/Users/Chris/Documents/Thesis/potterProposal/potterProposal.tex
+(C:/Users/Chris/Documents/Thesis/potterProposal/potterProposal.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks14
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\picins\picins.sty"
+Option `picins' Version 3.0 Sep. 1992, TH Darmstadt/HRZ
+\@BILD=\box26
+\@TEXT=\box27
+\d@breite=\dimen105
+\d@hoehe=\dimen106
+\d@xoff=\dimen107
+\d@yoff=\dimen108
+\d@shad=\dimen109
+\d@dash=\dimen110
+\d@boxl=\dimen111
+\d@pichskip=\dimen112
+\d@tmp=\dimen113
+\d@tmpa=\dimen114
+\d@bskip=\dimen115
+\hsiz@=\dimen116
+\p@getot@l=\dimen117
+\c@breite=\count88
+\c@hoehe=\count89
+\c@xoff=\count90
+\c@yoff=\count91
+\c@pos=\count92
+\c@shad=\count93
+\c@dash=\count94
+\c@boxl=\count95
+\c@zeilen=\count96
+\@changemode=\count97
+\c@piccaption=\count98
+\c@piccaptionpos=\count99
+\c@picpos=\count100
+\c@whole=\count101
+\c@half=\count102
+\c@tmp=\count103
+\c@tmpa=\count104
+\c@tmpb=\count105
+\c@tmpc=\count106
+\c@tmpd=\count107
+\d@leftskip=\skip43
+\ptoti=\dimen118
+\ptotii=\dimen119
+\env@box=\box28
+\d@envdp=\dimen120
+\c@hsize=\count108
+\c@envdp=\count109
+\d@envb=\dimen121
+)
+(C:\Users\Chris\Documents\Thesis\potterProposal\potterProposal.aux
+
+LaTeX Warning: Label `fig:regions' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count110
+\scratchdimen=\dimen122
+\scratchbox=\box29
+\nofMPsegments=\count111
+\nofMParguments=\count112
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen123
+\MPnumerator=\count114
+\makeMPintoPDFobject=\count115
+\everyMPtoPDFconversion=\toks17
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<images/turner.jpg, id=1, 262.581pt x 201.8742pt>
+File: images/turner.jpg Graphic file (type jpg)
+ <use images/turner.jpg>
+Package pdftex.def Info: images/turner.jpg used on input line 26.
+(pdftex.def)             Requested size: 188.01642pt x 144.54pt.
+
+<images/Ray_trace_diagram.png, id=2, 803.0pt x 533.995pt>
+File: images/Ray_trace_diagram.png Graphic file (type png)
+
+<use images/Ray_trace_diagram.png>
+Package pdftex.def Info: images/Ray_trace_diagram.png used on input line 27.
+(pdftex.def)             Requested size: 217.35202pt x 144.54pt.
+ [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Chris/Documents/
+Thesis/potterProposal/images/turner.jpg> <C:/Users/Chris/Documents/Thesis/potte
+rProposal/images/Ray_trace_diagram.png>]
+<images/rayCasting.png, id=15, 1284.8pt x 722.7pt>
+File: images/rayCasting.png Graphic file (type png)
+ <use images/rayCasting.png>
+Package pdftex.def Info: images/rayCasting.png used on input line 43.
+(pdftex.def)             Requested size: 144.54pt x 81.29472pt.
+
+<images/rayTracing.png, id=16, 1284.8pt x 722.7pt>
+File: images/rayTracing.png Graphic file (type png)
+ <use images/rayTracing.png>
+Package pdftex.def Info: images/rayTracing.png used on input line 47.
+(pdftex.def)             Requested size: 144.54pt x 81.29472pt.
+
+[2 <C:/Users/Chris/Documents/Thesis/potterProposal/images/rayCasting.png> <C:/U
+sers/Chris/Documents/Thesis/potterProposal/images/rayTracing.png>]
+<images/aOcclusion.jpg, id=22, 1284.8pt x 722.7pt>
+File: images/aOcclusion.jpg Graphic file (type jpg)
+ <use images/aOcclusion.jpg>
+Package pdftex.def Info: images/aOcclusion.jpg used on input line 64.
+(pdftex.def)             Requested size: 147.73909pt x 83.11005pt.
+
+<images/globalIll.jpg, id=23, 1284.8pt x 722.7pt>
+File: images/globalIll.jpg Graphic file (type jpg)
+ <use images/globalIll.jpg>
+Package pdftex.def Info: images/globalIll.jpg used on input line 65.
+(pdftex.def)             Requested size: 147.73909pt x 83.11005pt.
+
+<images/caustics.jpg, id=24, 1284.8pt x 722.7pt>
+File: images/caustics.jpg Graphic file (type jpg)
+ <use images/caustics.jpg>
+Package pdftex.def Info: images/caustics.jpg used on input line 66.
+(pdftex.def)             Requested size: 147.73909pt x 83.11005pt.
+
+[3 <C:/Users/Chris/Documents/Thesis/potterProposal/images/aOcclusion.jpg> <C:/U
+sers/Chris/Documents/Thesis/potterProposal/images/globalIll.jpg> <C:/Users/Chri
+s/Documents/Thesis/potterProposal/images/caustics.jpg>]
+(C:\Users\Chris\Documents\Thesis\potterProposal\potterProposal.bbl [4])
+[5] (C:\Users\Chris\Documents\Thesis\potterProposal\potterProposal.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1382 strings out of 493921
+ 18571 string characters out of 3144875
+ 74538 words of memory out of 3000000
+ 4681 multiletter control sequences out of 15000+200000
+ 11841 words of font info for 46 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,11n,24p,1217b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on potterProposal.pdf (5 pages, 1177687 bytes).
+PDF statistics:
+ 57 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+

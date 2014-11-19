@@ -1,0 +1,33 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\vskip -10pt
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Ray Tracing Diagram\cite {RayTracingDiagram}}}{3}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces An example of Lambert Shading created in Autodesk Maya 2010\copyright }}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces An example of the deficit of Gouraud shading being apparent in the highlight in a lowpoly model.\cite {GouraudLow} }}{7}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Phong Shading created in Autodesk Maya\copyright 2010}}{8}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Blinn Shading created in Autodesk Maya 2010\copyright }}{9}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Gooch Shading Example\cite {gooch1998non}}}{11}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces An example of texture mapping to the surface of a teapot. \cite {blinn1976texture}}}{12}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces An example of bump mapping introduced by Jim Blinn. \cite {blinn1978simulation}}}{13}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Real World Indirect Illumination/Radiosity Effect with a racquetball on a piece of paper.}}{16}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Example of Ambient Occlusion}}{17}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Example of Global Illumination}}{18}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Example of Caustic Effect}}{19}
+\addvspace {10\p@ }
+\vskip -10pt
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram of the Parenting/Dependency Structure of the Ray Casting Program}}{26}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram of the strived for each program Structure of a Ray Casting Program}}{27}
+\addvspace {10\p@ }
+\vskip -10pt
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Ray Casting Accomplished with Processing. Shown are three spheres with a different texture type for each, and five planes all with flat textures applied.}}{46}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Ray Casting Accomplished with Python. Shown are two spheres, and one plane that all cast shadows from a simple point light. }}{47}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ray Casting Accomplished with C++. Shown are two spheres, five planes and an area light that all cast shadows, which accounts for the soft shadow effect. }}{47}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ray Casting Accomplished with C++. Shown are two spheres with 2 separate shader types with two separate images mapped to them, and two planes, one with a repeated image texture and one without any image texture. }}{48}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Ray Casting Accomplished with Processing. One cube with twelve triangles and an image mapped to it on a plane with a repeated image texture illuminated by a spotlight.}}{48}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Basic Performance Graph filler}}{49}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Basic Performance Graph filler}}{49}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Basic Performance Graph filler}}{50}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Basic Performance Graph filler}}{50}
+\addvspace {10\p@ }
+\vskip -10pt
+\contentsline {figure}{\numberline {5.1}{\ignorespaces TAMU figure}}{52}

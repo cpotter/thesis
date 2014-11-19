@@ -1,0 +1,111 @@
+\begin{thebibliography}{10}
+
+\bibitem{Blinn:1977}
+James~F. Blinn.
+\newblock Models of light reflection for computer synthesized pictures.
+\newblock {\em SIGGRAPH Comput. Graph.}, 11(2):192--198, July 1977.
+
+\bibitem{blinn1978simulation}
+James~F Blinn.
+\newblock Simulation of wrinkled surfaces.
+\newblock In {\em ACM SIGGRAPH Computer Graphics}, volume~12, pages 286--292.
+  ACM, 1978.
+
+\bibitem{blinn1976texture}
+James~F Blinn and Martin~E Newell.
+\newblock Texture and reflection in computer generated images.
+\newblock {\em Communications of the ACM}, 19(10):542--547, 1976.
+
+\bibitem{cardelli1985understanding}
+Luca Cardelli and Peter Wegner.
+\newblock On understanding types, data abstraction, and polymorphism.
+\newblock {\em ACM Computing Surveys (CSUR)}, 17(4):471--523, 1985.
+
+\bibitem{catmull1974subdivision}
+Edwin Catmull.
+\newblock A subdivision algorithm for computer display of curved surfaces.
+\newblock Technical report, DTIC Document, 1974.
+
+\bibitem{gooch1998non}
+Amy Gooch, Bruce Gooch, Peter Shirley, and Elaine Cohen.
+\newblock A non-photorealistic lighting model for automatic technical
+  illustration.
+\newblock In {\em Proceedings of the 25th annual conference on Computer
+  graphics and interactive techniques}, pages 447--452. ACM, 1998.
+
+\bibitem{Goral:1984}
+Cindy~M. Goral, Kenneth~E. Torrance, Donald~P. Greenberg, and Bennett Battaile.
+\newblock Modeling the interaction of light between diffuse surfaces.
+\newblock {\em SIGGRAPH Comput. Graph.}, 18(3):213--222, January 1984.
+
+\bibitem{gouraud1971}
+Henri Gouraud.
+\newblock Continuous shading of curved surfaces.
+\newblock {\em Computers, IEEE Transactions on}, 100(6):623--629, 1971.
+
+\bibitem{RayTracingDiagram}
+Henrik.
+\newblock Ray tracing diagram.
+
+\bibitem{hughes2013computer}
+John~F Hughes, Andries van Dam, Steven~K Feiner, Morgan McGuire, and David~F
+  Sklar.
+\newblock {\em Computer graphics: principles and practice}.
+\newblock Pearson Education, 2013.
+
+\bibitem{GouraudLow}
+Kri.
+\newblock Gouraud low.
+
+\bibitem{lyon1993phong}
+Richard~F Lyon.
+\newblock Phong shading reformulation for hardware renderer simplification.
+\newblock {\em Apple Computer}, 43, 1993.
+
+\bibitem{markosian1997real}
+Lee Markosian, Michael~A Kowalski, Daniel Goldstein, Samuel~J Trychin, John~F
+  Hughes, and Lubomir~D Bourdev.
+\newblock Real-time nonphotorealistic rendering.
+\newblock In {\em Proceedings of the 24th annual conference on Computer
+  graphics and interactive techniques}, pages 415--420. ACM
+  Press/Addison-Wesley Publishing Co., 1997.
+
+\bibitem{mcconnell2004code}
+Steve McConnell.
+\newblock {\em Code complete}.
+\newblock O'Reilly Media, Inc., 2004.
+
+\bibitem{naugler2007c}
+David~R Naugler.
+\newblock C\# 2.0 for c++ and java programmer: conference workshop.
+\newblock {\em Journal of Computing Sciences in Colleges}, 22(5):1--1, 2007.
+
+\bibitem{ngan2004experimental}
+Addy Ngan, Fr{\'e}do Durand, and Wojciech Matusik.
+\newblock Experimental validation of analytical brdf models.
+\newblock In {\em ACM SIGGRAPH 2004 Sketches}, page~90. ACM, 2004.
+
+\bibitem{Phong1975}
+Bui~Tuong Phong.
+\newblock Illumination for computer generated pictures.
+\newblock {\em Commun. ACM}, 18(6):311--317, June 1975.
+
+\bibitem{Roth1982}
+Scott~D Roth.
+\newblock Ray casting for modeling solids.
+\newblock {\em Computer graphics and image processing}, 18(2):109--144, 1982.
+
+\bibitem{stroustrup1996history}
+Bjarne Stroustrup.
+\newblock A history of c++: 1979--1991.
+\newblock In {\em History of programming languages---II}, pages 699--769. ACM,
+  1996.
+
+\bibitem{vanBlog1}
+Guido van Rossum.
+\newblock Personal history- part 1, cwi.
+\newblock
+  http://python-history.blogspot.com/2009/01/personal-history-part-1-cwi.html,
+  2009.
+
+\end{thebibliography}

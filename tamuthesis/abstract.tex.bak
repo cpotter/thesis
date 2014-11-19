@@ -1,0 +1,27 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  New template code for TAMU Theses and Dissertations starting Fall 2012.
+%  For more info about this template or the
+%  TAMU LaTeX User's Group, see http://www.howdy.me/.
+%
+%  Author: Wendy Lynn Turner
+%	 Version 1.0
+%  Last updated 8/5/2012
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                           ABSTRACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT} % Needs to be set to part, so the TOC doesnt add 'CHAPTER ' prefix in the TOC.
+
+\pagestyle{plain} % No headers, just page numbers
+\pagenumbering{roman} % Roman numerals
+\setcounter{page}{2}
+
+\indent In this thesis four different computer programming languages, C++, Python, Processing and Pixar's Renderman, were used to realize four different rendering programs.  The goal was to identify the main challenges in implementation with each language and qualitatively evaluate each program once completed.  A set of ``ray tracing milestones" were established so that each language can address the challenges unique to that language.  These milestones are related to the image synthesis process and include: preliminary preparations, direction illumination, distributed ray tracing and indirect illumination.  Preliminary preparations refers to the necessary classes or data structures needed to perform basic math operations or image reading/writing functions crucial to creating/saving ray traced images.  This can also refer to any outside knowledge of a language needed, for instance makefiles or compilers needed to run C++ code.
+
+
+
+\pagebreak{} 

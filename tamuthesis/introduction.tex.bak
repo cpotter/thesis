@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  New template code for TAMU Theses and Dissertations starting Fall 2012.
+%  For more info about this template or the
+%  TAMU LaTeX User's Group, see http://www.howdy.me/.
+%
+%  Author: Wendy Lynn Turner
+%	 Version 1.0
+%  Last updated 8/5/2012
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                           INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagestyle{plain} % No headers, just page numbers
+\pagenumbering{arabic} % Arabic numerals
+\setcounter{page}{1}
+
+
+\chapter{\uppercase {Introduction}}
+Image synthesis is the process of generating images.  More specifically, we will be considering it as the process of generating images from virtual 3D scenes on a computer.  Computer graphics studios like Pixar and Dreamworks rely on their propriety image synthesis pipeline to create photorealistic animations for their movies.  The final product that is released to the public is a direct result of the image synthesis process.  Implementing a ray tracer is a very daunting task, but can be worth the effort for artists who are looking to make a career in professional computer graphics lighting.  Stepping through the tasks required to create images from a ray tracer can be invaluable to understanding how to optimize render time while still creating high quality images.
+
+Writing a rendering program can be very intimidating for an artist. Rendering programs consist of two fundamental parts, theory and implementation.  The complex vector/matrix math theory to compute intersections within the 3D scene can be difficult to understand by itself.  Coupling those theories with proper computer language jargon can multiply the difficulty.  In addition to remembering the linear algebra, artists need to worry about code syntax and segmentation faults (generally an attempt to access memory that the CPU cannot physically address), which can be demoralizing to even the most experienced computer scientist.  Rather than gaining experience/experimentation in the mathematics of image synthesis, artists can become distracted from the task at hand by focusing on the logistics of implementing unnecessary code.
+
+Most students, when implementing a ray tracer, are siphoned into implementing their image synthesis programs in C++, perhaps because of tradition or because of introduction/familiarity from previous classwork.  C++ can be a very tricky language, with many aspects of preparation needed before one can start programming at all.  Though C++ can be very fast, which is needed for professional image synthesis, the process of learning ray tracing theory does not necessarily benefit from a high speed processing program.  This thesis has attempted to provide guidelines to introduce programming languages and techniques related to rendering so artists can spend less time on the implementation aspects of the process and more time on the theoretical experience of image synthesis, especially since as an artist, the most beautiful code is not your end goal.  In addition to the C++ language, Processing, Python and RenderMan were evaluated.
+
+The qualitative results were generated from the researcher himself.  My background in scripting languages was very informal before my admittance into the Visualization Department at Texas A\&M.  I hold a BFA from the Rochester Institute of Technology, with a minor in Computer Science.  My experience with computer languages, however, was not at a point where I felt comfortable with writing simple scripts, nevermind an entire image synthesis program.  Firsthand results recorded in this thesis are notes and ``hiccups" encountered through each implementation step of the ray tracing process.  My hope is that these results will show student and teacher alike the complications with each language and help lead them through overcoming those obstacles in order to produce great art.

@@ -1,0 +1,322 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: Cp1252
+
+@incollection{Cook:1987,
+ author = {Cook, Robert L. and Torrance, Kenneth E.},
+ chapter = {A reflectance model for computer graphics},
+ title = {Image understanding 1985-86},
+ editor = {Richards, Whitman and Ullman, Shimon},
+ year = {1987},
+ isbn = {0-89391-311-1},
+ pages = {1--19},
+ numpages = {19},
+ url = {http://dl.acm.org/citation.cfm?id=29892.29893},
+ acmid = {29893},
+ publisher = {Ablex Publishing Corp.},
+ address = {Norwood, NJ, USA},
+}
+
+@inproceedings{cook1984shade,
+  title={Shade trees},
+  author={Cook, Robert L},
+  booktitle={ACM Siggraph Computer Graphics},
+  volume={18},
+  number={3},
+  pages={223--231},
+  year={1984},
+  organization={ACM},
+}
+
+@inproceedings{cook1984,
+  title={Distributed ray tracing},
+  author={Cook, Robert L and Porter, Thomas and Carpenter, Loren},
+  booktitle={ACM SIGGRAPH Computer Graphics},
+  volume={18},
+  number={3},
+  pages={137--145},
+  year={1984},
+  organization={ACM},
+}
+
+@article{Blinn:1977,
+ author = {Blinn, James F.},
+ title = {Models of light reflection for computer synthesized pictures},
+ journal = {SIGGRAPH Comput. Graph.},
+ issue_date = {Summer 1977},
+ volume = {11},
+ number = {2},
+ month = jul,
+ year = {1977},
+ issn = {0097-8930},
+ pages = {192--198},
+ numpages = {7},
+ url = {http://doi.acm.org/10.1145/965141.563893},
+ doi = {10.1145/965141.563893},
+ acmid = {563893},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {computer graphics, graphic display, hidden surface removal, shading},
+}
+
+@article{Goral:1984,
+ author = {Goral, Cindy M. and Torrance, Kenneth E. and Greenberg, Donald P. and Battaile, Bennett},
+ title = {Modeling the interaction of light between diffuse surfaces},
+ journal = {SIGGRAPH Comput. Graph.},
+ issue_date = {July 1984},
+ volume = {18},
+ number = {3},
+ month = jan,
+ year = {1984},
+ issn = {0097-8930},
+ pages = {213--222},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/964965.808601},
+ doi = {10.1145/964965.808601},
+ acmid = {808601},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Diffuse reflections, Form factors, Light reflection models, Radiosity, Shading},
+}
+
+
+@article{gouraud1971,
+  title={Continuous shading of curved surfaces},
+  author={Gouraud, Henri},
+  journal={Computers, IEEE Transactions on},
+  volume={100},
+  number={6},
+  pages={623--629},
+  year={1971},
+  publisher={IEEE}
+}
+
+@inproceedings{Gooch1998,
+ author = {Gooch, Amy and Gooch, Bruce and Shirley, Peter and Cohen, Elaine},
+ title = {A non-photorealistic lighting model for automatic technical illustration},
+ booktitle = {Proceedings of the 25th annual conference on Computer graphics and interactive techniques},
+ series = {SIGGRAPH '98},
+ year = {1998},
+ isbn = {0-89791-999-8},
+ pages = {447--452},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/280814.280950},
+ doi = {10.1145/280814.280950},
+ acmid = {280950},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {color, illustration, lighting models, non-photorealistic rendering, shading, silhouettes, tone},
+}
+
+@article{Phong1975,
+ author = {Phong, Bui Tuong},
+ title = {Illumination for computer generated pictures},
+ journal = {Commun. ACM},
+ issue_date = {June 1975},
+ volume = {18},
+ number = {6},
+ month = jun,
+ year = {1975},
+ issn = {0001-0782},
+ pages = {311--317},
+ numpages = {7},
+ url = {http://doi.acm.org/10.1145/360825.360839},
+ doi = {10.1145/360825.360839},
+ acmid = {360839},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {computer graphics, graphic display, hidden surface removal, shading},
+}
+
+@inproceedings{cook1987reyes,
+  title={The Reyes image rendering architecture},
+  author={Cook, Robert L and Carpenter, Loren and Catmull, Edwin},
+  booktitle={ACM SIGGRAPH Computer Graphics},
+  volume={21},
+  number={4},
+  pages={95--102},
+  year={1987},
+  organization={ACM}
+}
+
+@book{glassner2010processing,
+  title={Processing for Visual Artists: How to Create Expressive Images and Interactive Art},
+  author={Glassner, Andrew},
+  year={2010},
+  publisher={AK Peters, Ltd.}
+}
+
+@article{Whitted1980,
+ author = {Whitted, Turner},
+ title = {An improved illumination model for shaded display},
+ journal = {Commun. ACM},
+ issue_date = {June 1980},
+ volume = {23},
+ number = {6},
+ month = jun,
+ year = {1980},
+ issn = {0001-0782},
+ pages = {343--349},
+ numpages = {7},
+ url = {http://doi.acm.org/10.1145/358876.358882},
+ doi = {10.1145/358876.358882},
+ acmid = {358882},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {computer animation, computer graphics, raster displays, shading, visible surface algorithms},
+}
+
+@article{Roth1982,
+  title={Ray casting for modeling solids},
+  author={Roth, Scott D},
+  journal={Computer graphics and image processing},
+  volume={18},
+  number={2},
+  pages={109--144},
+  year={1982},
+  publisher={Elsevier}
+}
+
+@misc{RayTracingDiagram,
+  title={Ray Tracing Diagram},
+  author = {Henrik}
+  date = {4/12/2008}
+}
+
+@misc{GouraudLow,
+  title={Gouraud Low},
+  author={Kri},
+  date={10/22/2011}
+}
+
+@techreport{roberts1963machine,
+  title={Machine perception of three-dimensional solids},
+  author={Roberts, Lawrence G},
+  year={1963},
+  institution={DTIC Document}
+}
+@inproceedings{appel1968some,
+  title={Some techniques for shading machine renderings of solids},
+  author={Appel, Arthur},
+  booktitle={Proceedings of the April 30--May 2, 1968, spring joint computer conference},
+  pages={37--45},
+  year={1968},
+  organization={ACM}
+}
+@article{lyon1993phong,
+  title={Phong shading reformulation for hardware renderer simplification},
+  author={Lyon, Richard F},
+  journal={Apple Computer},
+  volume={43},
+  year={1993}
+}
+@inproceedings{stroustrup1996history,
+  title={A history of C++: 1979--1991},
+  author={Stroustrup, Bjarne},
+  booktitle={History of programming languages---II},
+  pages={699--769},
+  year={1996},
+  organization={ACM}
+}
+@misc{vanBlog1,
+  author = {van Rossum, Guido},
+  title = {Personal History- part 1, CWI},
+  journal = {The History of Python},
+  type = {Blog},
+  number = {January 20},
+  year = {2009},
+  howpublished ={http://python-history.blogspot.com/2009/01/personal-history-part-1-cwi.html}
+}
+@misc{vanBlog2,
+  author = {van Rossum, Guido},
+  title = {Personal History- part 2, CNRI and Beyond},
+  journal = {The History of Python},
+  type = {Blog},
+  number = {January 20},
+  year = {2009},
+  howpublished ={http://python-history.blogspot.com/2009/01/personal-history-part-1-cwi.html}
+}
+@article{van1999computer,
+  title={Computer programming for everybody},
+  author={Van Rossum, Guido and others},
+  journal={Proposal to the Corporation for National Research Initiatives},
+  year={1999},
+  publisher={Citeseer}
+}
+@article{naugler2007c,
+  title={C\# 2.0 for C++ and Java programmer: conference workshop},
+  author={Naugler, David R},
+  journal={Journal of Computing Sciences in Colleges},
+  volume={22},
+  number={5},
+  pages={1--1},
+  year={2007},
+  publisher={Consortium for Computing Sciences in Colleges}
+}
+@book{hughes2013computer,
+  title={Computer graphics: principles and practice},
+  author={Hughes, John F and van Dam, Andries and Feiner, Steven K and McGuire, Morgan and Sklar, David F},
+  year={2013},
+  publisher={Pearson Education}
+}
+@inproceedings{gooch1998non,
+  title={A non-photorealistic lighting model for automatic technical illustration},
+  author={Gooch, Amy and Gooch, Bruce and Shirley, Peter and Cohen, Elaine},
+  booktitle={Proceedings of the 25th annual conference on Computer graphics and interactive techniques},
+  pages={447--452},
+  year={1998},
+  organization={ACM}
+}
+@inproceedings{ngan2004experimental,
+  title={Experimental validation of analytical BRDF models},
+  author={Ngan, Addy and Durand, Fr{\'e}do and Matusik, Wojciech},
+  booktitle={ACM SIGGRAPH 2004 Sketches},
+  pages={90},
+  year={2004},
+  organization={ACM}
+}
+@inproceedings{markosian1997real,
+  title={Real-time nonphotorealistic rendering},
+  author={Markosian, Lee and Kowalski, Michael A and Goldstein, Daniel and Trychin, Samuel J and Hughes, John F and Bourdev, Lubomir D},
+  booktitle={Proceedings of the 24th annual conference on Computer graphics and interactive techniques},
+  pages={415--420},
+  year={1997},
+  organization={ACM Press/Addison-Wesley Publishing Co.}
+}
+@book{mcconnell2004code,
+  title={Code complete},
+  author={McConnell, Steve},
+  year={2004},
+  publisher={O'Reilly Media, Inc.}
+}
+@techreport{catmull1974subdivision,
+  title={A subdivision algorithm for computer display of curved surfaces.},
+  author={Catmull, Edwin},
+  year={1974},
+  institution={DTIC Document}
+}
+@article{blinn1976texture,
+  title={Texture and reflection in computer generated images},
+  author={Blinn, James F and Newell, Martin E},
+  journal={Communications of the ACM},
+  volume={19},
+  number={10},
+  pages={542--547},
+  year={1976},
+  publisher={ACM}
+}
+@phdthesis{mikkelsen2008simulation,
+  title={Simulation of wrinkled surfaces revisited},
+  author={Mikkelsen, M},
+  year={2008},
+  school={Master thesis, Department of Computer Science at the University of Copenhagen}
+}
+@inproceedings{blinn1978simulation,
+  title={Simulation of wrinkled surfaces},
+  author={Blinn, James F},
+  booktitle={ACM SIGGRAPH Computer Graphics},
+  volume={12},
+  number={3},
+  pages={286--292},
+  year={1978},
+  organization={ACM}
+}

@@ -1,0 +1,11 @@
+\usepackage{glossaries}
+
+\makeglossaries
+
+\newglossary entry{class}{
+
+    name = Class,
+    description = {the prototype for an object in an object-oriented language.  May also be considered to be a set of object which share a common structure and behaviour. The structure of a class is determined by the class variables which represent the state of an object of that class and the behavior is given by a set of methods associated with the class}
+}
+
+Class - 

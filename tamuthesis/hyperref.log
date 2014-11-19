@@ -1,0 +1,14 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2014.2.28)  28 FEB 2014 18:21
+entering extended mode
+**C:/Users/Chris/Documents/Thesis/tamuthesis/hyperref.sty
+(C:/Users/Chris/Documents/Thesis/tamuthesis/hyperref.sty
+! Undefined control sequence.
+l.87 \usepackage
+                {array}
+? 
+! Emergency stop.
+l.87 \usepackage
+                {array}
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!
