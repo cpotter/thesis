@@ -126,7 +126,7 @@ Each of these examples creates a \textit{Sphere} list, an instance of a \textit{
 Static typing allows type inconsistencies to be discovered at compile time and guarantees that executed programs are type-consistent. It facilitates early detection of type errors and allows greater execution-time efficiency. It enforces a programming discipline on the programmer that makes programs more structured and easier to read. \cite{cardelli1985understanding}
 \end{quote}
 
-Two Computer Science called Inheritance and Polymorphism will help to solve this problem.  Inheritance is the idea that a child class can inherit the properties and functions of a parent class.  Cardelli and Wegner also explain different types of polymorphism, and from their explanation the type used for this thesis is called subtyping.
+Two computer science terms called \textit{inheritance} and \textit{polymorphism} will help to solve this problem.  Inheritance is the idea that a child class can inherit the properties and functions of a parent class.  Cardelli and Wegner also explain different types of polymorphism, and from their explanation the type used for this thesis is called subtyping.
 \begin{quote}
 Subtyping is an instance of \textit{inclusion polymorphism}. The idea of a type being a subtype of another type is useful not only for subranges of ordered types such as integers, but also for more complex structures
 such as a type representing Toyotas which is a subtype of a more general type such as Vehicles. Every object of a subtype can be used in a supertype context in the sense that every Toyota is a vehicle and can be
@@ -201,7 +201,7 @@ The syntax for the cube.pde file is the same as the sphere.pde with the extends 
 \line(1,0){100}
 \end{center}
 \subparagraph{Note:Python Classes}
-While parent classes are not important for Python list functionality because Python can be considered a dynamic type language (as opposed to the static type for C++ and Java), for organizational purposed they were used and inheritance was declared as follows (note tabs and spacing), using the same example:
+While parent classes are not important for Python list functionality because Python can be considered a dynamic type language (as opposed to the static type for C++ and Java), for organizational purposes they were used and inheritance was declared as follows (note tabs and spacing), using the same example:
 \singlespacing
 \begin{lstlisting}[language=Python, style=mystyle]
 //shape.py file//
@@ -320,13 +320,16 @@ For each test in Basic Ray Casting, a variety of levels of complexity were teste
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Milestone 3: Ray Tracing and Distributed Ray Tracing}
-\subsection{C++}
-\subsection{Processing}
-\subsection{Python}
-\subsection{RenderMan\copyright}
+The main complications discovered for this milestone where all related to the implementation of a recusive ray tracing strategy.  All three languages had the same difficulties that were not unique to each implementation.  To implement recursion requires the knowledge of establishing a process function within each raytracing function that will repeatedly call itself unless specific escape conditions are met.  It is important to establish these conditions such that they are met within the execution of the program or else the ray tracer will implement an infinite loop that will consume computing resources until the computer crashes and needs to be restarted.  
+
+\subsection{Basic Ray Casting Images}
+Very Beautiful
+\subsection{Performance Results}
+So fast
 
 \section{Milestone 4: Indirect Illumination}
-\subsection{C++}
-\subsection{Processing}
-\subsection{Python}
-\subsection{RenderMan\copyright}
+Milestone 4 established the same complications that Milestone 3 had, with the majority of the implementation being the same throughout all three languages.
+\subsection{Basic Ray Casting Images}
+Very Beautiful
+\subsection{Performance Results}
+So fast
