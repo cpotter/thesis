@@ -46,7 +46,7 @@ write image\;
 \caption{Ray Casting Pseudocode}
 \end{algorithm}
 
-Each pixel in an image will correspond to a position in 3D space, as demonstrated in the Figure \ref{fig:raytracingdiagram}, found on page \pageref{fig:raytracingdiagram}. In this Figure \ref{fig:raytracingdiagram} each box represents an image pixel.  The basics of ray casting are determined as for each pixel in the image, determine if there is an intersection with each 3D object in the scene.  The closest object's intersection point will determine the pixel's final color based off of that object's illumination algorithm and the lights in the scene.  Each ray tracer written follows the above pseudocode, but each ray tracer also adhered to specific structure and code organization.  In order to better understand the ray tracing structure, the researcher needed to establish and learn some important Computer Science terms.
+Each pixel in an image will correspond to a position in 3D space, as demonstrated in the Figure \ref{fig:raytracingdiagram}, found on page \pageref{fig:raytracingdiagram}. In this figure, each box represents an image pixel.  The basics of ray casting are determined as for each pixel in the image, determine if there is an intersection with each 3D object in the scene.  The closest object's intersection point will determine the pixel's final color based off of that object's illumination algorithm and the lights in the scene.  Each ray tracer written follows Algorithm \ref{alg:RayTracingPseudocode}, but each ray tracer also adhered to specific structure and code organization.  In order to better understand the ray tracing structure, the researcher needed to establish and learn some important Computer Science terms as part of the preliminary preparations for the project.
 
 \section{Milestone 1: Preliminary Preparations}
 Preliminary Preparations refers to anything that needed to be accomplished before being able to start working on the ray tracing theory coding.  In this section, simple matters such as program language installation and accessibility will be discussed.  Also discussed is the majority of the ``Utilities" section of Figure \ref{fig:RayTracerClassStructure}. The foundations of a ray tracing program are built around two fundamental procedures, image writing and vector math. It can be argued that ray tracing can also be accomplished through matrix operations, but for the purposes of this thesis, vector math will be enough.  vector math is the basis for all ray tracing theory, and because of this, a class or data structure that can accomplish all aspects of vector math including addition, subtraction, dot product and cross product is crucial to accomplishing the image synthesis program.  In addition to this, in order to see the final product after all the theory has been calculated, you must be able to write an image.  Arguably the easiest image to write out is a Portable PixMap (PPM).  Other image formats include JPEG, BITMAP, and PNG.  Each of these image formats requires a more complicated compression algorithm.  Each language may also require unique addition files in order to compile or execute the final product.  Each of these languages will be assessed from the viewpoint of a student in the Visualization Department of Texas A\&M, because this is directly relevant to the researcher's experience.
@@ -97,8 +97,51 @@ It is worth noting that there is an open source alternative to RenderMan\copyrig
 \section{Milestone 2: Direct Illumination- Ray Casting}
 Majority of the planning and learning occurred on an implementation level during this milestone, because it was the first milestone to implement code.  Declaring a class for each language was a different learning process.  C++ and Processing have a similar syntax, with relatively minor changes but Python is significantly different, not only in syntax but in theory.
 A class is fundamentally a descriptor of characteristics and functions needed by a virtual ``object" in a computer program.  Class declaration and planning for each language is important because this relates back to accomplishing our ray-tracing theory, which establishes our goal to iterate over every object in a scene from each pixel in an image to determine an intersection.  Most logically, we want every object in our scene to be held in one place so that we only need to write one iteration loop.  Furthermore, since we have no knowledge of how many objects might be in a scene at one time, ideally this container should be dynamic in size.  This introduces our two main challenges for implementing Basic Ray Casting theory into computer programming, organization of classes(objects) and assembly of those classes into a dynamically sized data container (or data structure).
-\subsection{Classes}
+\subsection{Classes Overview}
+\begin{figure}[ht]
+\centering
+\includegraphics[height=3.0in]{figures/rayTracerStructure.jpg}
+\caption{Diagram of the Parenting/Dependency Structure of the Ray Casting Program explained}
+\label{fig:RayTracerDependencies}
+\end{figure}
+In order to successfully determine how classes should be established, it is important to plan how classes should relate to one another.  The relationships of each class to one another can most successfully be summarized as such in Figure \ref{fig:RayTracerDependencies2}.  The picture represents the 4 main object types, \textbf{Shapes}, \textbf{Materials}, \textbf{Color}, \textbf{Lights}. In summary, every \textbf{shape} must have a \textbf{material} which must have at least one \textbf{color}. A \textbf{shape} can be any of the circles sprouting locally around its pink square{sphere, ellipsoid, cylinder, etc..} just as a material can be any of the circles sprouting from it's pink square {Lambert, Phong, Cartoon}.  \textbf{Lights} do not have any connections with Shapes or materials, but each light must have a color.  Classes can be broken into two main elements, variables, which hold data within the class, and functions, which mold the data that is held within the class.  In all languages, variables have a specific type, for instance integers(whole numbers), floats(decimal numbers), and strings(words or letters).  Classes are a way to introduce new variable types.  If I were to create a Shape class, I could when make Shape variables that determine their properties from the Shape class.  The following is an abstract summary of each of the primary variables and functions for each Major Class type established in this raytracer.
+\subsubsection{Shapes}
+The Shape class consisted of 4 main variables and 3 main functions. The following Univeral Modelling Language diagram demonstrates the class:
 
+\begin{tikzpicture}
+\umlClass[box=, reference=Shape,]{Shape}{
+  \umlAttribute[visibility= public, type= Vector]{Position}
+  \umlAttribute[visibility= public, type= Vector]{Hit Position}
+  \umlAttribute[visibility= public, type= Material]{Material}
+  \umlAttribute[visibility= public, type= float]{Distance}
+}
+{%
+  \umlMethod[visibility= public, returntype= bool]{intersect}{}
+  \umlMethod[visibility=-, returntype=Color]{rtnColor}{}
+  \umlMethod[visibility= private, returntype = void]{calcNormal}{}
+}
+\end{tikzpicture}
+\subsubsection{Materials}
+\subsubsection{Color}
+\subsubsection{Lights}
+\subsubsection{Declaring Classes With each Language}
+%TODO: C++ Class Declaration
+%TODO: Java Class Declaration
+%TODO: Python Class Declaration
+\subsection{Dynamic Class Variables}
+%TODO: Pass by reference within classes to introduce polymorphism
+Since Processing and C++ are both strong-typed languages, eliminating the data type issue is not possible, but there is a solution.  Cardelli and Peter describe strong-typed, or static-typed, languages in their article entitled textit{On Understanding Types, Data Abstraction, and Polymorphism} as follows
+\begin{quote}
+Static typing allows type inconsistencies to be discovered at compile time and guarantees that executed programs are type-consistent. It facilitates early detection of type errors and allows greater execution-time efficiency. It enforces a programming discipline on the programmer that makes programs more structured and easier to read. \cite{cardelli1985understanding}
+\end{quote}
+
+Two computer science terms called \textit{inheritance} and \textit{polymorphism} will help to solve this problem.  Inheritance is the idea that a child class can inherit the properties and functions of a parent class.  Cardelli and Wegner also explain different types of polymorphism, and from their explanation the type used for this thesis is called subtyping.
+\begin{quote}
+Subtyping is an instance of \textit{inclusion polymorphism}. The idea of a type being a subtype of another type is useful not only for subranges of ordered types such as integers, but also for more complex structures
+such as a type representing Toyotas which is a subtype of a more general type such as Vehicles. Every object of a subtype can be used in a supertype context in the sense that every Toyota is a vehicle and can be
+operated on by all operations that are applicable to vehicles. \cite{cardelli1985understanding}
+\end{quote}
+To introduce how this is achieved in each language, the topic of ``pass-by-value" and ``pass-by-reference" must be discussed.  In both C++, when declaring an object, two variations can be done in relation to the memory organization within the computer.  The first, ``pass-by-value" is the most common and everytime a variable changes or moves, a \textit{copy} of the variable is made within the backend and saved in a new location.  However another schema exists, ``pass-by-reference", which rather than copies the data creates a reference or ``pointer" back to the original variable.
 \subsection{Data Structures}
 Accomplishing the data structure task in Python is the most simple and takes no extra effort.  Simply declare an object and place it in a Python list, like so:
 \begin{lstlisting}[language=Python, caption=Python List Example, style=mystyle]
@@ -224,7 +267,7 @@ class Sphere(Shape.Shape):
 \line(1,0){100}
 \end{center}
 \doublespacing
-\paragraph{} Now that the class structure has been established for each strict-type language to promote a single object data container, which will mirror the ray tracing structure theory, establishing the data structure for each language needs to be adjusted.  To introduce how this is achieved in each language, the topic of ``pass-by-value" and ``pass-by-reference" must be discussed.  In both C++, when declaring an object, two variations can be done in relation to the memory organization within the computer.  The first, ``pass-by-value" is the most common and everytime a variable changes or moves, a \textit{copy} of the variable is made within the backend and saved in a new location.  However another schema exists, ``pass-by-reference", which rather than copies the data creates a reference or ``pointer" back to the original variable.  The ``pass-by-reference" tactic in C++ is what will allow different variable types to be saved to a common parent data structure, as follows:
+\paragraph{} Now that the class structure has been established for each strict-type language to promote a single object data container, which will mirror the ray tracing structure theory, establishing the data structure for each language needs to be adjusted.  The ``pass-by-reference" tactic in C++ is what will allow different variable types to be saved to a common parent data structure, as follows:
 \begin{lstlisting}[language=C++, caption=C++ Vector Example, style=mystyle]
 vector <Shape*> shape_list;
 Sphere *sphere_object = new Sphere();
