@@ -8,7 +8,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[12pt]{report}
+\documentclass[12pt, pdftex]{report}
 \usepackage[letterpaper]{geometry}
 \geometry{verbose,tmargin=1.25in,bmargin=1.25in,lmargin=1.4in,rmargin=1.15in}
  \usepackage[doublespacing]{setspace}
@@ -26,10 +26,11 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{listings}
-\usepackage{color}
-%for UML Files
-\usepackage{tikz}
 
+\DeclareGraphicsRule{*}{mps}{*}{}
+
+
+\usepackage{color}
 
 \definecolor{codegreen}{rgb}{.098,.667,.333}
 \definecolor{codegray}{rgb}{.5,.5,.5}
@@ -56,7 +57,6 @@
     showtabs=false,
     tabsize=1
 }
-
 
 % Added to fix issues with pdf searching in some versions of LaTeX
 %\usepackage[T1]{fontenc}\usepackage{lmodern}

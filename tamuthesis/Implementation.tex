@@ -106,28 +106,83 @@ A class is fundamentally a descriptor of characteristics and functions needed by
 \end{figure}
 In order to successfully determine how classes should be established, it is important to plan how classes should relate to one another.  The relationships of each class to one another can most successfully be summarized as such in Figure \ref{fig:RayTracerDependencies2}.  The picture represents the 4 main object types, \textbf{Shapes}, \textbf{Materials}, \textbf{Color}, \textbf{Lights}. In summary, every \textbf{shape} must have a \textbf{material} which must have at least one \textbf{color}. A \textbf{shape} can be any of the circles sprouting locally around its pink square{sphere, ellipsoid, cylinder, etc..} just as a material can be any of the circles sprouting from it's pink square {Lambert, Phong, Cartoon}.  \textbf{Lights} do not have any connections with Shapes or materials, but each light must have a color.  Classes can be broken into two main elements, variables, which hold data within the class, and functions, which mold the data that is held within the class.  In all languages, variables have a specific type, for instance integers(whole numbers), floats(decimal numbers), and strings(words or letters).  Classes are a way to introduce new variable types.  If I were to create a Shape class, I could when make Shape variables that determine their properties from the Shape class.  The following is an abstract summary of each of the primary variables and functions for each Major Class type established in this raytracer.
 \subsubsection{Shapes}
-The Shape class consisted of 4 main variables and 3 main functions. The following Univeral Modelling Language diagram demonstrates the class:
+The Shape class consisted of 4 main variables and 3 main functions. Figure \ref{uml:shapeclass} Unified Modeling Language diagram demonstrates the class.
 
-% \begin{tikzpicture}
-% \umlClass[box=, reference=Shape,]{Shape}{
-%   \umlAttribute[visibility= public, type= Vector]{Position}
-%   \umlAttribute[visibility= public, type= Vector]{Hit Position}
-%   \umlAttribute[visibility= public, type= Material]{Material}
-%   \umlAttribute[visibility= public, type= float]{Distance}
-% }
-% {%
-%   \umlMethod[visibility= public, returntype= bool]{intersect}{}
-%   \umlMethod[visibility=-, returntype=Color]{rtnColor}{}
-%   \umlMethod[visibility= private, returntype = void]{calcNormal}{}
-% }
-% \end{tikzpicture}
-\subsubsection{Materials}
+\begin{figure}[ht]
+
+\centering
+\includegraphics{class_diagram.1}
+\caption{Unified Modeling Language Diagram displaying important Shape Class features}
+\label{uml:shapeclass}
+\end{figure}
+
+As we can see the Shape Class has all the important base functionality for every shape object.  Associated with every shape object was a Vector that described it's position in 3d space, a Vector that was calculated to describe where a light ray or camera view ray would hit the shape (Hit Point), a Material Object that described what the shape would look like when interacting with the light and camera view vectors and a Distance integer that helped to sort all the shapes in the scene from closes to furthest away.  The shapes initially had 3 important base functions that calculated if the shape intersecting a light ray (intersect), what the return Color would be based off of the material on the object (rtnColor) and the Surface normal that was given from the intersection point (calcNormal).  These 3 functions were inherited to all the children shape objects.
+
 \subsubsection{Color}
+The Color parent object was a class that incorporated all types of color information that could be displayed in a Material.  The color objects were Vectors that held Red, Green, and Blue(RGB) hue information but could also be added and subtracted from one another.  Color information could also be taken from an image or a procedural equation to describe the RGB information transmitted from the surface. Figure \ref{uml:colorclass} shows the color class.
+
+\begin{figure}[ht]
+\centering
+\includegraphics{class_diagram.3}
+\caption{Unified Modeling Language Diagram displaying important Shape Class features}
+\label{uml:colorclass}
+\end{figure}
+
+The color parent object held Color information in a Vector, and a method that described how to calculate the color vector.
+
+\subsubsection{Materials}
+The parent material class consisted of 2 components, as demonstrated in Figure \ref{uml:materialclass}.
+
+\begin{figure}[!ht]
+\centering
+	\includegraphics{class_diagram.2}
+\caption{Unified Modeling Language Diagram displaying important Shape Class features}
+\label{uml:materialclass}
+\end{figure}
+
+As we can see the Material class very simply had a variable that stored a Color object, which described which color would be used when calculating the returned color from the returnColor function.  These variables were either overwritten or added onto in child classes but the base Material Parent class was used as a holder for all material objects.
 \subsubsection{Lights}
-\subsubsection{Declaring Classes With each Language}
+A light object was very simple and followed the UML Diagram in Figure \ref{uml:lightclass}:
+\begin{figure}[!ht]
+\centering
+	\includegraphics{class_diagram.4}
+\caption{Unified Modeling Language Diagram displaying important Shape Class features}
+\label{uml:lightclass}
+\end{figure}
+A parent light object only held the information needed to determine the color for the light so the variables were the Color Object and Position Vector and the function calculated if the light intersected with the object and if it did, what color would be returned from the light's Color object.
+
+\subsection{Declaring Classes With each Language}
+For this section we will use the Shape class to demonstrate how classes are declared in each language.  The Shape class structure is defined in figure \ref{uml:shapeclass}.
+\subsubsection{C++}
 %TODO: C++ Class Declaration
+\begin{lstlisting}[language=C++, caption=C++ Class definition example, style=mystyle]
+vector <Sphere> sphere_list;
+Sphere sphere_object = new Sphere();
+sphere_list.push_back(sphere_object);
+\end{lstlisting}
+\subsubsection{Using C++ classes}
+%TODO: C++ class syntax
+\subsubsection{Processing}
 %TODO: Java Class Declaration
+\begin{lstlisting}[language=Java, caption=Java Class definition example, style=mystyle]
+ArrayList<Sphere> sphere_list = new ArrayList<Sphere>();
+Sphere sphere_object = new Sphere();
+sphere_list.add(sphere_object);
+\end{lstlisting}
+\subsubsection{Using Processing classes}
+%TODO: Processing class syntax
+\subsubsection{Python}
 %TODO: Python Class Declaration
+\begin{lstlisting}[language=Python, caption = Example of class definition in Python, style=mystyle]
+//shape.py file//
+class Shape(object):
+    __init__(self,...):
+        //shape constructor
+    def size(self,...):
+        //size calculation for all child classes
+\end{lstlisting}
+\subsubsection{Using Python classes}
+%TODO: Python class syntax
 \subsection{Dynamic Class Variables}
 %TODO: Pass by reference within classes to introduce polymorphism
 Since Processing and C++ are both strong-typed languages, eliminating the data type issue is not possible, but there is a solution.  Cardelli and Peter describe strong-typed, or static-typed, languages in their article entitled textit{On Understanding Types, Data Abstraction, and Polymorphism} as follows
